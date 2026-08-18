@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mysuru Utsava | A Conscious Shopping Festival</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF1E4;
+    --paper:#F6E9D4;
+    --paper-light:#FFFDF9;
+    --gold:#DFA02E;
+    --gold-dark:#A9781F;
+    --terracotta:#C2532A;
+    --green:#4A6741;
+    --charcoal:#1A1A1A;
+    --ink:#241933;
+    --muted:#54465F;
+    --line:rgba(36,25,51,0.1);
+    --max:1160px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; scroll-padding-top:84px; }
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--charcoal);
+    font-family:'Work Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    margin:0;
+    color:var(--charcoal);
+  }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:var(--max); margin:0 auto; padding:0 28px; }
+  section{ position:relative; }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:12.5px; letter-spacing:.14em; text-transform:uppercase;
+    font-weight:700; color:var(--terracotta);
+    margin-bottom:14px;
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:13px 26px; border-radius:999px;
+    font-weight:600; font-size:14.5px;
+    border:2px solid transparent;
+    cursor:pointer; transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+  }
+  .btn:hover{ transform:translateY(-2px); }
+  .btn-primary{
+    background:var(--gold);
+    color:var(--charcoal);
+    box-shadow:0 4px 0 var(--gold-dark);
+  }
+  .btn-primary:hover{ box-shadow:0 6px 0 var(--gold-dark); background:#e8a938; }
+  .btn-outline{
+    border-color:var(--charcoal);
+    color:var(--charcoal);
+    background:transparent;
+  }
+  .btn-outline:hover{ background:var(--charcoal); color:var(--cream); }
+  .btn-light{
+    background:#FFFFFF;
+    color:var(--charcoal);
+    border:1px solid var(--line);
+    box-shadow:0 3px 10px rgba(36,25,51,0.06);
+  }
+  .btn-light:hover{ background:var(--paper-light); }
+
+  /* ---------- NAV & SCROLLBAR ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(251,241,228,0.94);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+    transition:background .25s ease, box-shadow .25s ease, padding .25s ease;
+  }
+  header.scrolled{
+    background:rgba(251,241,228,0.98);
+    box-shadow:0 4px 20px rgba(36,25,51,0.08);
+  }
+  .scroll-progress{
+    position:absolute; bottom:0; left:0; height:3px; width:0%;
+    background:linear-gradient(90deg, var(--gold) 0%, var(--terracotta) 100%);
+    transition:width .08s linear;
+    z-index:60;
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:8px 28px;
+  }
+  .logo-brand{
+    display:inline-flex; align-items:center; gap:16px;
+    text-decoration:none;
+  }
+  .logo-img{
+    height:72px;
+    width:auto;
+    object-fit:contain;
+    display:block;
+    filter:drop-shadow(0 4px 10px rgba(36,25,51,0.12));
+    transition:transform .2s ease;
+  }
+  .logo-brand:hover .logo-img{ transform:scale(1.04); }
+  .logo-text{
+    font-family:'Fraunces', serif; font-weight:700; font-size:28px;
+    color:var(--charcoal); letter-spacing:.01em; line-height:1;
+  }
+  .logo-text span{ color:var(--terracotta); }
+  .nav-links{ display:flex; gap:32px; align-items:center; }
+  .nav-links a{
+    font-size:14.5px; font-weight:600; color:var(--charcoal);
+    position:relative; padding:4px 0;
+    transition:color .2s ease;
+  }
+  .nav-links a::after{
+    content:''; position:absolute; left:0; bottom:-2px; width:0; height:2px;
+    background:var(--terracotta); transition:width .22s ease;
+  }
+  .nav-links a:hover::after,
+  .nav-links a.active::after{ width:100%; }
+  .nav-links a.active{ color:var(--terracotta); }
+  .lang-toggle{
+    display:flex; border:1.5px solid var(--charcoal); border-radius:999px; overflow:hidden;
+    font-size:12.5px; font-weight:700;
+  }
+  .lang-toggle button{
+    border:none; background:transparent; padding:7px 13px; cursor:pointer;
+    color:var(--charcoal); font-family:inherit;
+  }
+  .lang-toggle button.active{ background:var(--charcoal); color:var(--cream); }
+  .nav-toggle{ display:none; background:none; border:none; cursor:pointer; }
+  .nav-toggle svg{ width:26px; height:26px; }
+
+  /* ---------- SCROLL REVEAL ANIMATIONS ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity .7s cubic-bezier(0.16, 1, 0.3, 1), transform .7s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change:opacity, transform;
+  }
+  .reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+  }
+  .stagger-1{ transition-delay: .05s; }
+  .stagger-2{ transition-delay: .12s; }
+  .stagger-3{ transition-delay: .19s; }
+  .stagger-4{ transition-delay: .26s; }
+  .stagger-5{ transition-delay: .33s; }
+  .stagger-6{ transition-delay: .40s; }
+
+  /* ---------- BACK TO TOP BUTTON ---------- */
+  .back-to-top{
+    position:fixed; bottom:28px; right:28px; z-index:90;
+    width:46px; height:46px; border-radius:50%;
+    background:var(--charcoal); color:var(--cream);
+    border:1.5px solid rgba(251,241,228,0.25);
+    box-shadow:0 6px 20px rgba(36,25,51,0.25);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; opacity:0; visibility:hidden;
+    transform:translateY(14px);
+    transition:opacity .25s ease, transform .25s ease, background .2s ease, visibility .25s;
+  }
+  .back-to-top.show{
+    opacity:1; visibility:visible; transform:translateY(0);
+  }
+  .back-to-top:hover{
+    background:var(--terracotta);
+    transform:translateY(-3px);
+  }
+  .back-to-top svg{ width:22px; height:22px; stroke:currentColor; }
+
+  @media (max-width:860px){
+    .logo-img{ height:56px; }
+    .logo-text{ font-size:22px; }
+    .nav-links{
+      position:absolute; top:100%; left:0; right:0;
+      background:var(--cream); flex-direction:column; align-items:flex-start;
+      padding:20px 28px 26px; gap:16px; border-bottom:1px solid var(--line);
+      display:none;
+    }
+    .nav-links.open{ display:flex; }
+    .nav-toggle{ display:block; }
+    .back-to-top{ bottom:20px; right:20px; width:42px; height:42px; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background: var(--cream) url('hero.png') right bottom / cover no-repeat;
+    color:var(--charcoal);
+    padding:60px 0 52px;
+    overflow:hidden;
+    position:relative;
+  }
+  .hero .wrap{ position:relative; z-index:2; }
+  .hero-content{
+    max-width:540px;
+    margin-right:auto;
+    text-align:left;
+  }
+  .hero-motif{
+    position:absolute; top:-60px; right:-80px; width:420px; height:420px;
+    border:1px solid rgba(36,25,51,0.06); border-radius:50%;
+    pointer-events:none;
+  }
+  .hero-motif::before{
+    content:''; position:absolute; inset:44px; border:1px solid rgba(36,25,51,0.04); border-radius:50%;
+  }
+  .hero-eyebrow{
+    color:var(--terracotta); font-size:13px; letter-spacing:.16em; text-transform:uppercase;
+    font-weight:700; margin-bottom:12px; display:flex; align-items:center; gap:10px;
+  }
+  .hero h1{
+    color:var(--charcoal, #1A1A1A);
+    font-size:clamp(32px, 4.5vw, 56px);
+    line-height:1.15;
+    font-weight:600;
+    max-width:540px;
+    margin:0;
+  }
+  .hero h1 em{
+    font-style:italic; color:var(--terracotta); font-weight:500;
+  }
+  .rotator-wrap{
+    display:inline-flex;
+    position:relative;
+    color:var(--terracotta);
+    vertical-align:bottom;
+    overflow:hidden;
+    height:1.2em;
+    line-height:1.2em;
+  }
+  .rotator-word{
+    display:inline-block;
+    opacity:0;
+    transform:translateY(100%);
+    transition:opacity .42s cubic-bezier(0.16, 1, 0.3, 1), transform .42s cubic-bezier(0.16, 1, 0.3, 1);
+    white-space:nowrap;
+  }
+  .rotator-word.active{
+    opacity:1;
+    transform:translateY(0);
+  }
+  .rotator-word.out{
+    opacity:0;
+    transform:translateY(-100%);
+    position:absolute;
+  }
+  .hero p.lede{
+    font-size:17px; line-height:1.6; max-width:480px;
+    margin:14px 0 0;
+    color:#463A55;
+  }
+  .hero-meta{
+    margin-top:22px; display:flex; flex-wrap:wrap; gap:12px; align-items:center;
+  }
+  .date-badge{
+    display:flex; align-items:center; gap:12px;
+    background:rgba(251,241,228,0.92);
+    border:1px solid var(--line);
+    padding:10px 18px; border-radius:14px;
+    box-shadow:0 4px 12px rgba(36,25,51,0.06);
+    backdrop-filter:blur(6px);
+  }
+  .date-badge .nums{ display:flex; gap:6px; }
+  .date-badge .nums span{
+    font-family:'Fraunces', serif; font-size:24px; font-weight:600; color:var(--terracotta);
+  }
+  .date-badge .divider-dot{ opacity:.5; font-size:18px; color:var(--ink); }
+  .date-badge .meta-text{ font-size:12.5px; line-height:1.35; color:#54465F; }
+  .venue-pill{
+    font-size:13px; font-weight:600; padding:10px 16px; border-radius:999px;
+    border:1px solid var(--line); color:var(--charcoal);
+    background:rgba(251,241,228,0.92);
+    box-shadow:0 4px 12px rgba(36,25,51,0.06);
+    backdrop-filter:blur(6px);
+  }
+  .hero-countdown{
+    margin-top:20px;
+    background:rgba(251,241,228,0.95);
+    border:1px solid var(--line);
+    padding:12px 18px;
+    border-radius:16px;
+    display:inline-flex;
+    flex-direction:column;
+    gap:8px;
+    box-shadow:0 4px 14px rgba(36,25,51,0.06);
+    backdrop-filter:blur(8px);
+    width:max-content;
+    max-width:100%;
+  }
+  .countdown-label{
+    font-size:11.5px;
+    font-weight:700;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--terracotta);
+    display:flex;
+    align-items:center;
+    gap:7px;
+  }
+  .countdown-label::before{
+    content:''; width:7px; height:7px; border-radius:50%;
+    background:#22C55E; display:inline-block;
+    box-shadow:0 0 8px rgba(34,197,94,0.7);
+    animation:pulseDot 1.8s infinite;
+  }
+  @keyframes pulseDot{
+    0%,100%{ opacity:1; transform:scale(1); }
+    50%{ opacity:.35; transform:scale(0.8); }
+  }
+  .countdown-grid{
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .count-unit{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    min-width:46px;
+    background:#FFFFFF;
+    border:1px solid rgba(36,25,51,0.09);
+    border-radius:10px;
+    padding:5px 8px;
+    box-shadow:0 2px 6px rgba(36,25,51,0.04);
+  }
+  .count-num{
+    font-family:'Fraunces', serif;
+    font-size:22px;
+    font-weight:700;
+    line-height:1;
+    color:var(--charcoal);
+  }
+  .count-txt{
+    font-size:9.5px;
+    font-weight:700;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:#7D6B8D;
+    margin-top:2px;
+  }
+  .count-sep{
+    font-family:'Fraunces', serif;
+    font-size:18px;
+    font-weight:700;
+    color:var(--terracotta);
+    opacity:.7;
+    margin-top:-6px;
+  }
+  .hero-ctas{ margin-top:22px; display:flex; gap:12px; flex-wrap:wrap; }
+
+  @media (max-width:960px){
+    .hero{
+      background:
+        linear-gradient(90deg, rgba(251,241,228,0.96) 0%, rgba(251,241,228,0.9) 55%, rgba(251,241,228,0.45) 100%),
+        url('hero.png') right bottom / cover no-repeat;
+      padding:48px 0 42px;
+    }
+    .hero-content{ max-width:480px; }
+  }
+  @media (max-width:640px){
+    .hero{
+      background:
+        linear-gradient(180deg, rgba(251,241,228,0.94) 0%, rgba(251,241,228,0.88) 60%, rgba(251,241,228,0.7) 100%),
+        url('hero.png') center bottom / cover no-repeat;
+      padding:38px 0 34px;
+    }
+    .hero-content{ max-width:100%; }
+    .date-badge, .venue-pill{ width:100%; justify-content:center; }
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about{
+    padding:88px 0 74px;
+    background:var(--cream);
+    border-bottom:1px solid rgba(36,25,51,0.06);
+  }
+  .about-grid{
+    display:grid; grid-template-columns:1fr 1.15fr; gap:64px; align-items:start;
+  }
+  .about h2{ font-size:clamp(30px,4vw,44px); line-height:1.1; max-width:380px; }
+  .about-copy p{ font-size:16.5px; line-height:1.75; color:#463A55; margin:0 0 18px; }
+  .tags{ display:flex; flex-wrap:wrap; gap:10px; margin-top:26px; }
+  .tag{
+    font-size:13px; font-weight:600; padding:8px 16px; border-radius:999px;
+    border:1.5px solid var(--charcoal); color:var(--charcoal); background:rgba(255,255,255,0.6);
+  }
+  .tag:nth-child(2){ border-color:var(--terracotta); color:var(--terracotta); background:rgba(194,83,42,0.06); }
+  .tag:nth-child(3){ border-color:var(--green); color:var(--green); background:rgba(74,103,65,0.06); }
+  .tag:nth-child(4){ border-color:var(--gold-dark); color:var(--gold-dark); background:rgba(223,160,46,0.08); }
+
+  /* ---------- CATEGORIES ---------- */
+  .categories{
+    padding:88px 0 96px;
+    background:#FCF6EE;
+    border-bottom:1px solid rgba(36,25,51,0.06);
+  }
+  .cat-head{ margin-bottom:40px; max-width:640px; text-align:left; }
+  .cat-head h2{ font-size:clamp(28px,4vw,42px); margin:0 0 12px; }
+  .cat-head p{ max-width:560px; font-size:16px; color:#54465F; line-height:1.6; margin:0; }
+  .cat-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;
+  }
+  .cat-card{
+    background:#F8EFE4;
+    border-radius:20px;
+    border:1px solid rgba(36,25,51,0.08);
+    overflow:hidden;
+    display:flex; flex-direction:column;
+    transition:background .25s ease, transform .25s ease, box-shadow .25s ease;
+    box-shadow:0 4px 14px rgba(36,25,51,0.04);
+  }
+  .cat-card:hover{
+    background:#FFFFFF;
+    transform:translateY(-4px);
+    box-shadow:0 12px 28px rgba(36,25,51,0.08);
+  }
+  .cat-img-wrap{
+    width:100%; height:170px; overflow:hidden; position:relative; background:#EFE3CF;
+  }
+  .cat-img-wrap img{
+    width:100%; height:100%; object-fit:cover; display:block;
+    transition:transform .4s ease;
+  }
+  .cat-card:hover .cat-img-wrap img{
+    transform:scale(1.06);
+  }
+  .cat-body{
+    padding:22px 20px 24px;
+    display:flex; flex-direction:column; flex:1; justify-content:space-between;
+  }
+  .cat-num{ font-size:12px; font-weight:700; letter-spacing:.12em; color:var(--terracotta); text-transform:uppercase; margin-bottom:8px; }
+  .cat-card h3{ font-size:20px; margin:0 0 10px; color:var(--charcoal); }
+  .cat-card p{ font-size:14px; line-height:1.6; color:#54465F; margin:0; }
+  @media (max-width:920px){ .cat-grid{ grid-template-columns:repeat(2,1fr); gap:16px; } }
+  @media (max-width:600px){ .cat-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- WHO IS IT FOR ---------- */
+  .audience{
+    padding:92px 0 96px;
+    background:#F4EDE3;
+    border-bottom:1px solid rgba(36,25,51,0.06);
+  }
+  .audience-grid{ display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+  .aud-card{
+    border-radius:24px; padding:44px 38px; position:relative; overflow:hidden;
+    border:1px solid rgba(36,25,51,0.08);
+    box-shadow:0 6px 20px rgba(36,25,51,0.04);
+  }
+  .aud-card.vendors{ background:#F7E5D0; color:var(--charcoal); }
+  .aud-card.visitors{ background:#EBF1E8; color:var(--charcoal); }
+  .aud-card .eyebrow2{
+    font-size:12.5px; letter-spacing:.14em; text-transform:uppercase; font-weight:700;
+    color:var(--terracotta); margin-bottom:16px;
+  }
+  .aud-card.visitors .eyebrow2{ color:var(--green); }
+  .aud-card h3{ color:var(--charcoal); font-size:26px; margin-bottom:16px; max-width:280px; }
+  .aud-card p{ font-size:15px; line-height:1.7; color:#463A55; margin:0 0 26px; max-width:400px; }
+  @media (max-width:860px){ .audience-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- SCHEDULE ---------- */
+  .schedule{
+    padding:96px 0;
+    background:#EDE0CC;
+    color:var(--charcoal);
+    border-bottom:1px solid rgba(36,25,51,0.08);
+  }
+  .schedule .eyebrow{ color:var(--terracotta); }
+  .schedule h2{ color:var(--charcoal); font-size:clamp(28px,4vw,42px); margin-bottom:48px; max-width:520px; }
+  .tickets{ display:grid; grid-template-columns:repeat(3,1fr); gap:26px; }
+  .ticket{
+    background:#FFFFFF; color:var(--charcoal); border-radius:16px;
+    padding:30px 26px; position:relative;
+    border:1px solid rgba(36,25,51,0.08);
+    box-shadow:0 6px 18px rgba(36,25,51,0.06);
+  }
+  .ticket::before, .ticket::after{
+    content:''; position:absolute; top:50%; width:24px; height:24px;
+    background:#EDE0CC; border-radius:50%; transform:translateY(-50%);
+    border:1px solid rgba(36,25,51,0.08);
+  }
+  .ticket::before{ left:-13px; }
+  .ticket::after{ right:-13px; }
+  .ticket .day-label{ font-size:12.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--terracotta); }
+  .ticket .day-num{ font-family:'Fraunces',serif; font-size:52px; font-weight:600; margin:6px 0 14px; line-height:1; color:var(--charcoal); }
+  .ticket .day-time{ font-size:14.5px; font-weight:600; border-top:1px solid var(--line); padding-top:14px; color:#54465F; }
+  .venue-line{
+    margin-top:40px; display:flex; align-items:center; gap:12px;
+    font-size:15px; color:#54465F;
+  }
+  @media (max-width:760px){ .tickets{ grid-template-columns:1fr; } }
+
+  /* ---------- GALLERY ---------- */
+  .gallery{
+    padding:96px 0;
+    background:#FAF2E8;
+    border-bottom:1px solid rgba(36,25,51,0.06);
+  }
+  .gallery h2{ font-size:clamp(28px,4vw,42px); margin-bottom:44px; max-width:520px; }
+  .gal-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); grid-auto-rows:200px; gap:16px;
+  }
+  .gal-item{
+    border-radius:18px; position:relative; overflow:hidden;
+    display:flex; align-items:flex-end; padding:20px;
+    color:var(--cream); font-weight:600; font-size:15px;
+    background-size:cover; background-position:center;
+    transition:transform .3s ease, box-shadow .3s ease;
+    box-shadow:0 6px 18px rgba(34,16,49,0.1);
+  }
+  .gal-item:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 28px rgba(34,16,49,0.22);
+  }
+  .gal-item::before{
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(0deg, rgba(34,16,49,0.88) 0%, rgba(34,16,49,0.3) 55%, rgba(34,16,49,0.05) 100%);
+    transition:opacity .3s ease;
+  }
+  .gal-item span{
+    position:relative; z-index:2;
+    text-shadow:0 2px 6px rgba(0,0,0,0.6);
+    letter-spacing:.02em;
+  }
+  .gal-item:nth-child(1){ background-image:url('images/handicrafts.jpg'); grid-row:span 2; }
+  .gal-item:nth-child(2){ background-image:url('images/performance.jpg'); }
+  .gal-item:nth-child(3){ background-image:url('images/lights.jpg'); }
+  .gal-item:nth-child(4){ background-image:url('images/food.jpg'); }
+  .gal-item:nth-child(5){ background-image:url('images/apparel.jpg'); grid-row:span 2; }
+  .gal-item:nth-child(6){ background-image:url('images/workshop.jpg'); }
+  @media (max-width:760px){
+    .gal-grid{ grid-template-columns:repeat(2,1fr); grid-auto-rows:160px; gap:12px; }
+    .gal-item:nth-child(1), .gal-item:nth-child(5){ grid-row:span 1; }
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact{
+    padding:96px 0 60px;
+    background:#F2EAE0;
+  }
+  .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:60px; }
+  .contact h2{ font-size:clamp(28px,4vw,42px); margin-bottom:16px; }
+  .contact p.sub{ font-size:15.5px; color:#54465F; max-width:380px; line-height:1.6; }
+  .contact-list{ list-style:none; padding:0; margin:36px 0 0; display:flex; flex-direction:column; gap:22px; }
+  .contact-list li{ display:flex; align-items:center; gap:16px; }
+  .contact-list .ic{
+    width:44px; height:44px; border-radius:50%; background:rgba(194,83,42,0.12);
+    color:var(--terracotta); display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    font-size:18px;
+  }
+  .contact-list .label{ font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:#7D6B8D; font-weight:700; }
+  .contact-list .val{ font-size:16px; font-weight:600; color:var(--charcoal); }
+  .map-box{
+    border-radius:20px; background:#FAF3EB; min-height:340px;
+    height:100%; overflow:hidden; border:1px solid rgba(36,25,51,0.08);
+    box-shadow:0 6px 18px rgba(36,25,51,0.06);
+    position:relative;
+  }
+  .map-box iframe{
+    width:100%; height:100%; min-height:340px; border:0; display:block;
+  }
+  @media (max-width:860px){ .contact-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:#E6D7C3;
+    color:#54465F;
+    padding:48px 0;
+    border-top:1px solid rgba(36,25,51,0.12);
+  }
+  .foot-grid{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+  .foot-links{ display:flex; gap:24px; font-size:13.5px; }
+  .foot-links a{ color:var(--charcoal); font-weight:600; }
+  .foot-links a:hover{ color:var(--terracotta); }
+  .foot-note{ font-size:12.5px; color:#7D6B8D; margin-top:26px; text-align:center; }
+
+  @media (max-width:600px){
+    .about-grid, .contact-grid{ display:block; }
+    .about-copy{ margin-top:28px; }
+    .contact-grid > div:last-child{ margin-top:32px; }
+  }
+</style>
+</head>
+<body>
+
+<header id="header">
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <nav class="wrap">
+    <a href="#" class="logo-brand">
+      <img src="logo.png" alt="Mysuru Utsava" class="logo-img">
+      <span class="logo-text" data-i18n="brand_name">Mysuru <span>Utsava</span></span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#about" data-i18n="nav_about">About</a>
+      <a href="#categories" data-i18n="nav_categories">Categories</a>
+      <a href="#schedule" data-i18n="nav_schedule">Schedule</a>
+      <a href="#gallery" data-i18n="nav_gallery">Gallery</a>
+      <a href="#contact" data-i18n="nav_contact">Contact</a>
+      <div class="lang-toggle" id="langToggle">
+        <button type="button" class="active" data-lang="en">EN</button>
+        <button type="button" data-lang="kn">ಕನ್ನಡ</button>
+      </div>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-motif"></div>
+  <div class="wrap">
+    <div class="hero-content reveal">
+      <div class="hero-eyebrow" data-i18n="hero_eyebrow">A Conscious Shopping Festival</div>
+      <h1 id="heroHeadline"><span data-i18n="hero_head_prefix">A vibrant festival gathered around craft, culture & </span><span class="rotator-wrap" id="rotatorWrap"><span class="rotator-word active">local food</span></span><span data-i18n="hero_head_suffix">.</span></h1>
+      <p class="lede" data-i18n="hero_lede">Mysuru Utsava is a flea market re-imagined: a conscious bazaar built around celebration, not just commerce. Curated with intention, not mass-produced excess.</p>
+      <div class="hero-meta">
+        <div class="date-badge">
+          <div class="nums"><span>11</span><span class="divider-dot">·</span><span>12</span><span class="divider-dot">·</span><span>13</span></div>
+          <div class="meta-text" data-i18n="hero_dates">Three days<br>10 AM to 9 PM</div>
+        </div>
+        <div class="venue-pill" data-i18n="hero_venue">📍 Nexus Centre City Mall, Mysuru</div>
+      </div>
+      <div class="hero-countdown">
+        <div class="countdown-label" data-i18n="cd_label">Festival Starts In</div>
+        <div class="countdown-grid">
+          <div class="count-unit"><span class="count-num" id="cdDays">00</span><span class="count-txt" data-i18n="cd_days">Days</span></div>
+          <span class="count-sep">:</span>
+          <div class="count-unit"><span class="count-num" id="cdHours">00</span><span class="count-txt" data-i18n="cd_hours">Hours</span></div>
+          <span class="count-sep">:</span>
+          <div class="count-unit"><span class="count-num" id="cdMins">00</span><span class="count-txt" data-i18n="cd_mins">Mins</span></div>
+          <span class="count-sep">:</span>
+          <div class="count-unit"><span class="count-num" id="cdSecs">00</span><span class="count-txt" data-i18n="cd_secs">Secs</span></div>
+        </div>
+      </div>
+      <div class="hero-ctas">
+        <a href="#schedule" class="btn btn-primary" data-i18n="hero_cta1">Plan your visit</a>
+        <a href="#contact" class="btn btn-outline" data-i18n="hero_cta2">Vendor enquiries</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <div class="eyebrow" data-i18n="about_eyebrow">What is it?</div>
+      <h2 data-i18n="about_title">More than a market.</h2>
+    </div>
+    <div class="about-copy reveal stagger-2">
+      <p data-i18n="about_p1">Mysuru Utsava brings together tradition, craft, food and performance under one roof, curated with intention rather than mass-produced excess.</p>
+      <p data-i18n="about_p2">Across three days, wander through handmade goods, taste local food, watch live performances, and take home a little more culture than you came with. Part bazaar, part festival, made for people who like to shop with meaning and celebrate while they're at it.</p>
+      <div class="tags">
+        <span class="tag" data-i18n="tag_tradition">Tradition</span>
+        <span class="tag" data-i18n="tag_celebration">Celebration</span>
+        <span class="tag" data-i18n="tag_event">Event</span>
+        <span class="tag" data-i18n="tag_entertainment">Fun & Entertainment</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="categories" id="categories">
+  <div class="wrap">
+    <div class="cat-head reveal">
+      <h2 data-i18n="cat_head_title">Six worlds, one venue.</h2>
+      <p data-i18n="cat_head_sub">Every stall is chosen with intention: real makers, honest materials, and stories worth knowing.</p>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card reveal stagger-1">
+        <div class="cat-img-wrap">
+          <img src="images/cat_craft.jpg" alt="Art & Handicrafts" loading="lazy">
+        </div>
+        <div class="cat-body">
+          <div class="cat-num" data-i18n="cat1_tag">01 CRAFT</div>
+          <div>
+            <h3 data-i18n="cat1_title">Art & Handicrafts</h3>
+            <p data-i18n="cat1_desc">Pottery and terracotta, bamboo & cane work, hand-painted decor, macrame, block printing and handloom textile art, made by the artisans themselves.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cat-card reveal stagger-2">
+        <div class="cat-img-wrap">
+          <img src="images/cat_apparel.jpg" alt="Apparel & Sarees" loading="lazy">
+        </div>
+        <div class="cat-body">
+          <div class="cat-num" data-i18n="cat2_tag">02 WEAR</div>
+          <div>
+            <h3 data-i18n="cat2_title">Apparel</h3>
+            <p data-i18n="cat2_desc">Sarees and ethnic wear, indie fashion labels, upcycled and refashioned clothing, occasion wear, traditional roots with a contemporary edge.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cat-card reveal stagger-3">
+        <div class="cat-img-wrap">
+          <img src="images/cat_jewellery.jpg" alt="Handcrafted Jewellery" loading="lazy">
+        </div>
+        <div class="cat-body">
+          <div class="cat-num" data-i18n="cat3_tag">03 ADORN</div>
+          <div>
+            <h3 data-i18n="cat3_title">Jewellery</h3>
+            <p data-i18n="cat3_desc">Handcrafted silver and oxidised pieces, terracotta and fabric jewellery, and contemporary artisan designs for everyday and festive wear.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cat-card reveal stagger-4">
+        <div class="cat-img-wrap">
+          <img src="images/cat_sustainable.jpg" alt="Conscious & Sustainable" loading="lazy">
+        </div>
+        <div class="cat-body">
+          <div class="cat-num" data-i18n="cat4_tag">04 MINDFUL</div>
+          <div>
+            <h3 data-i18n="cat4_title">Conscious & Sustainable</h3>
+            <p data-i18n="cat4_desc">Upcycled and zero-waste goods, natural dyes, organic skincare, reusable everyday products, made to last, not to be thrown away.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cat-card reveal stagger-5">
+        <div class="cat-img-wrap">
+          <img src="images/cat_eatables.jpg" alt="Local Eatables & Sweets" loading="lazy">
+        </div>
+        <div class="cat-body">
+          <div class="cat-num" data-i18n="cat5_tag">05 TASTE</div>
+          <div>
+            <h3 data-i18n="cat5_title">Eatables</h3>
+            <p data-i18n="cat5_desc">Local flavours, homemade food, health-conscious snacks and traditional festival treats from small kitchens.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cat-card reveal stagger-6">
+        <div class="cat-img-wrap">
+          <img src="images/cat_experiences.jpg" alt="Experiences & Performances" loading="lazy">
+        </div>
+        <div class="cat-body">
+          <div class="cat-num" data-i18n="cat6_tag">06 LIVE</div>
+          <div>
+            <h3 data-i18n="cat6_title">Experiences & Performances</h3>
+            <p data-i18n="cat6_desc">Live music and dance, cultural acts on stage, and hands-on workshops that let you make something with your own hands.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="audience">
+  <div class="wrap audience-grid">
+    <div class="aud-card vendors reveal stagger-1">
+      <div class="eyebrow2" data-i18n="aud_vendors_eyebrow">For Vendors & Entrepreneurs</div>
+      <h3 data-i18n="aud_vendors_title">Built to support local makers.</h3>
+      <p data-i18n="aud_vendors_desc">Women entrepreneurs, men entrepreneurs, passion-led makers who turned a hobby into a business, and young or first-time entrepreneurs just getting started. Get real support, reach the right audience, and build your brand with genuine in-person exposure.</p>
+      <a href="tel:+917795715495" class="btn btn-primary" data-i18n="aud_vendors_cta">Apply as a vendor</a>
+    </div>
+    <div class="aud-card visitors reveal stagger-2">
+      <div class="eyebrow2" data-i18n="aud_visitors_eyebrow">For Visitors</div>
+      <h3 data-i18n="aud_visitors_title">Shop with meaning.</h3>
+      <p data-i18n="aud_visitors_desc">Meet the makers behind what you buy, discover local and sustainable brands you won't find in a mall, and spend a day surrounded by food, music and craft. Come to shop, come to eat, come to watch a performance, or just come to see what Mysuru's small businesses are creating.</p>
+      <a href="#schedule" class="btn btn-outline" data-i18n="aud_visitors_cta">See the schedule</a>
+    </div>
+  </div>
+</section>
+
+<section class="schedule" id="schedule">
+  <div class="wrap">
+    <div class="eyebrow reveal" data-i18n="sched_eyebrow">Save the dates</div>
+    <h2 class="reveal" data-i18n="sched_title">Three days of shopping, food and performances at Nexus Centre City Mall, Mysuru.</h2>
+    <div class="tickets">
+      <div class="ticket reveal stagger-1">
+        <div class="day-label" data-i18n="ticket1_label">Day One</div>
+        <div class="day-num">11</div>
+        <div class="day-time" data-i18n="ticket_time">10:00 AM to 9:00 PM</div>
+      </div>
+      <div class="ticket reveal stagger-2">
+        <div class="day-label" data-i18n="ticket2_label">Day Two</div>
+        <div class="day-num">12</div>
+        <div class="day-time" data-i18n="ticket_time">10:00 AM to 9:00 PM</div>
+      </div>
+      <div class="ticket reveal stagger-3">
+        <div class="day-label" data-i18n="ticket3_label">Day Three</div>
+        <div class="day-num">13</div>
+        <div class="day-time" data-i18n="ticket_time">10:00 AM to 9:00 PM</div>
+      </div>
+    </div>
+    <div class="venue-line reveal stagger-4" data-i18n="sched_venue_line">📍 Nexus Centre City Mall, Mysuru • See you there.</div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="eyebrow reveal" data-i18n="gal_eyebrow">Moments</div>
+    <h2 class="reveal" data-i18n="gal_title">From past editions.</h2>
+    <div class="gal-grid">
+      <div class="gal-item reveal stagger-1"><span data-i18n="gal1">Handicraft stalls</span></div>
+      <div class="gal-item reveal stagger-2"><span data-i18n="gal2">Live performance</span></div>
+      <div class="gal-item reveal stagger-3"><span data-i18n="gal3">Festival lights</span></div>
+      <div class="gal-item reveal stagger-4"><span data-i18n="gal4">Food corner</span></div>
+      <div class="gal-item reveal stagger-5"><span data-i18n="gal5">Apparel walk</span></div>
+      <div class="gal-item reveal stagger-6"><span data-i18n="gal6">Workshop corner</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div class="reveal stagger-1">
+      <div class="eyebrow" data-i18n="contact_eyebrow">Get in touch</div>
+      <h2 data-i18n="contact_title">Say hello.</h2>
+      <p class="sub" data-i18n="contact_sub">Questions about the festival, vendor applications, or just want directions? Reach out any time.</p>
+      <ul class="contact-list">
+        <li>
+          <div class="ic">📞</div>
+          <div><div class="label" data-i18n="contact_call_label">Call us</div><div class="val"><a href="tel:+917795715495">+91 77957 15495</a></div></div>
+        </li>
+        <li>
+          <div class="ic">📷</div>
+          <div><div class="label" data-i18n="contact_ig_label">Instagram</div><div class="val"><a href="https://instagram.com/mysuru_utsava" target="_blank">@mysuru_utsava</a></div></div>
+        </li>
+        <li>
+          <div class="ic">📍</div>
+          <div><div class="label" data-i18n="contact_venue_label">Venue</div><div class="val" data-i18n="contact_venue_val">Nexus Centre City Mall, Mysuru</div></div>
+        </li>
+      </ul>
+    </div>
+    <div class="map-box reveal stagger-2">
+      <iframe 
+        src="https://maps.google.com/maps?q=Nexus+Centre+City+Mall,+Hyder+Ali+Road,+Nazarbad,+Mysuru,+Karnataka+570010&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+        title="Nexus Centre City Mall, Mysuru Location Map"
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <a href="#" class="logo-brand">
+        <img src="logo.png" alt="Mysuru Utsava" class="logo-img" style="height:68px;">
+        <span class="logo-text" data-i18n="brand_name">Mysuru <span>Utsava</span></span>
+      </a>
+      <div class="foot-links">
+        <a href="#about" data-i18n="nav_about">About</a>
+        <a href="#categories" data-i18n="nav_categories">Categories</a>
+        <a href="#schedule" data-i18n="nav_schedule">Schedule</a>
+        <a href="#gallery" data-i18n="nav_gallery">Gallery</a>
+        <a href="#contact" data-i18n="nav_contact">Contact</a>
+      </div>
+    </div>
+    <div class="foot-note" data-i18n="foot_note">A conscious shopping festival, celebrating Mysuru's craft, food and culture.</div>
+  </div>
+</footer>
+
+<script>
+  // Bilingual Translation Dictionary (English & Kannada)
+  var i18n = {
+    en: {
+      brand_name: 'Mysuru <span>Utsava</span>',
+      nav_about: 'About',
+      nav_categories: 'Categories',
+      nav_schedule: 'Schedule',
+      nav_gallery: 'Gallery',
+      nav_contact: 'Contact',
+      hero_eyebrow: 'A Conscious Shopping Festival',
+      hero_head_prefix: 'A vibrant festival gathered around craft, culture & ',
+      hero_head_suffix: '.',
+      hero_lede: 'Mysuru Utsava is a flea market re-imagined: a conscious bazaar built around celebration, not just commerce. Curated with intention, not mass-produced excess.',
+      hero_dates: 'Three days<br>10 AM to 9 PM',
+      hero_venue: '📍 Nexus Centre City Mall, Mysuru',
+      cd_label: 'Festival Starts In',
+      cd_days: 'Days',
+      cd_hours: 'Hours',
+      cd_mins: 'Mins',
+      cd_secs: 'Secs',
+      hero_cta1: 'Plan your visit',
+      hero_cta2: 'Vendor enquiries',
+      about_eyebrow: 'What is it?',
+      about_title: 'More than a market.',
+      about_p1: 'Mysuru Utsava brings together tradition, craft, food and performance under one roof, curated with intention rather than mass-produced excess.',
+      about_p2: 'Across three days, wander through handmade goods, taste local food, watch live performances, and take home a little more culture than you came with. Part bazaar, part festival, made for people who like to shop with meaning and celebrate while they\'re at it.',
+      tag_tradition: 'Tradition',
+      tag_celebration: 'Celebration',
+      tag_event: 'Event',
+      tag_entertainment: 'Fun & Entertainment',
+      cat_head_title: 'Six worlds, one venue.',
+      cat_head_sub: 'Every stall is chosen with intention: real makers, honest materials, and stories worth knowing.',
+      cat1_tag: '01 CRAFT',
+      cat1_title: 'Art & Handicrafts',
+      cat1_desc: 'Pottery and terracotta, bamboo & cane work, hand-painted decor, macrame, block printing and handloom textile art, made by the artisans themselves.',
+      cat2_tag: '02 WEAR',
+      cat2_title: 'Apparel',
+      cat2_desc: 'Sarees and ethnic wear, indie fashion labels, upcycled and refashioned clothing, occasion wear, traditional roots with a contemporary edge.',
+      cat3_tag: '03 ADORN',
+      cat3_title: 'Jewellery',
+      cat3_desc: 'Handcrafted silver and oxidised pieces, terracotta and fabric jewellery, and contemporary artisan designs for everyday and festive wear.',
+      cat4_tag: '04 MINDFUL',
+      cat4_title: 'Conscious & Sustainable',
+      cat4_desc: 'Upcycled and zero-waste goods, natural dyes, organic skincare, reusable everyday products, made to last, not to be thrown away.',
+      cat5_tag: '05 TASTE',
+      cat5_title: 'Eatables',
+      cat5_desc: 'Local flavours, homemade food, health-conscious snacks and traditional festival treats from small kitchens.',
+      cat6_tag: '06 LIVE',
+      cat6_title: 'Experiences & Performances',
+      cat6_desc: 'Live music and dance, cultural acts on stage, and hands-on workshops that let you make something with your own hands.',
+      aud_vendors_eyebrow: 'For Vendors & Entrepreneurs',
+      aud_vendors_title: 'Built to support local makers.',
+      aud_vendors_desc: 'Women entrepreneurs, men entrepreneurs, passion-led makers who turned a hobby into a business, and young or first-time entrepreneurs just getting started. Get real support, reach the right audience, and build your brand with genuine in-person exposure.',
+      aud_vendors_cta: 'Apply as a vendor',
+      aud_visitors_eyebrow: 'For Visitors',
+      aud_visitors_title: 'Shop with meaning.',
+      aud_visitors_desc: 'Meet the makers behind what you buy, discover local and sustainable brands you won\'t find in a mall, and spend a day surrounded by food, music and craft. Come to shop, come to eat, come to watch a performance, or just come to see what Mysuru\'s small businesses are creating.',
+      aud_visitors_cta: 'See the schedule',
+      sched_eyebrow: 'Save the dates',
+      sched_title: 'Three days of shopping, food and performances at Nexus Centre City Mall, Mysuru.',
+      ticket1_label: 'Day One',
+      ticket2_label: 'Day Two',
+      ticket3_label: 'Day Three',
+      ticket_time: '10:00 AM to 9:00 PM',
+      sched_venue_line: '📍 Nexus Centre City Mall, Mysuru • See you there.',
+      gal_eyebrow: 'Moments',
+      gal_title: 'From past editions.',
+      gal1: 'Handicraft stalls',
+      gal2: 'Live performance',
+      gal3: 'Festival lights',
+      gal4: 'Food corner',
+      gal5: 'Apparel walk',
+      gal6: 'Workshop corner',
+      contact_eyebrow: 'Get in touch',
+      contact_title: 'Say hello.',
+      contact_sub: 'Questions about the festival, vendor applications, or just want directions? Reach out any time.',
+      contact_call_label: 'Call us',
+      contact_ig_label: 'Instagram',
+      contact_venue_label: 'Venue',
+      contact_venue_val: 'Nexus Centre City Mall, Mysuru',
+      foot_note: 'A conscious shopping festival, celebrating Mysuru\'s craft, food and culture.'
+    },
+    kn: {
+      brand_name: 'ಮೈಸೂರು <span>ಉತ್ಸವ</span>',
+      nav_about: 'ಪರಿಚಯ',
+      nav_categories: 'ವಿಭಾಗಗಳು',
+      nav_schedule: 'ವೇಳಾಪಟ್ಟಿ',
+      nav_gallery: 'ಕ್ಷಣಚಿತ್ರಗಳು',
+      nav_contact: 'ಸಂಪರ್ಕಿಸಿ',
+      hero_eyebrow: 'ಒಂದು ಜಾಗೃತ ಶಾಪಿಂಗ್ ಹಬ್ಬ',
+      hero_head_prefix: 'ಕರಕುಶಲತೆ, ಕಲೆ ಮತ್ತು ',
+      hero_head_suffix: ' ಒಂದೇ ಸಂಭ್ರಮದಲ್ಲಿ.',
+      hero_lede: 'ಮೈಸೂರು ಉತ್ಸವವು ಮಾರುಕಟ್ಟೆಯ ಹೊಸ ಪರಿಕಲ್ಪನೆ: ಕೇವಲ ವ್ಯಾಪಾರವಲ್ಲದೆ ಸಂಸ್ಕೃತಿ ಮತ್ತು ಸೃಜನಶೀಲತೆಯ ಸಂಭ್ರಮ. ಅರ್ಥಪೂರ್ಣ ಶಾಪಿಂಗ್ ಅನುಭವಕ್ಕಾಗಿ ಸಿದ್ಧಪಡಿಸಲಾದ ಅಪೂರ್ವ ವೇದಿಕೆ.',
+      hero_dates: 'ಮೂರು ದಿನಗಳು<br>ಬೆಳಿಗ್ಗೆ 10 ರಿಂದ ರಾತ್ರಿ 9',
+      hero_venue: '📍 ನೆಕ್ಸಸ್ ಸೆಂಟರ್ ಸಿಟಿ ಮಾಲ್, ಮೈಸೂರು',
+      cd_label: 'ಉತ್ಸವ ಪ್ರಾರಂಭವಾಗಲು',
+      cd_days: 'ದಿನಗಳು',
+      cd_hours: 'ಗಂಟೆಗಳು',
+      cd_mins: 'ನಿಮಿಷ',
+      cd_secs: 'ಸೆಕೆಂಡ್',
+      hero_cta1: 'ಭೇಟಿಯ ಯೋಜನೆ ಮಾಡಿ',
+      hero_cta2: 'ಮಾರಾಟಗಾರರ ವಿಚಾರಣೆ',
+      about_eyebrow: 'ಇದು ಏನು?',
+      about_title: 'ಕೇವಲ ಮಾರುಕಟ್ಟೆಯಲ್ಲ, ಒಂದು ಹಬ್ಬ.',
+      about_p1: 'ಮೈಸೂರು ಉತ್ಸವವು ಸಂಪ್ರದಾಯ, ಕರಕುಶಲತೆ, ರುಚಿಕರ ಆಹಾರ ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ ಕಾರ್ಯಕ್ರಮಗಳನ್ನು ಒಂದೇ ಸೂರಿನಡಿ ತರುತ್ತದೆ.',
+      about_p2: 'ಮೂರು ದಿನಗಳ ಕಾಲ ಕೈಯಿಂದ ತಯಾರಿಸಿದ ವಸ್ತುಗಳನ್ನು ವೀಕ್ಷಿಸಿ, ಸ್ಥಳೀಯ ಆಹಾರದ ರುಚಿ ಸವಿಯಿರಿ, ನೇರ ಪ್ರದರ್ಶನಗಳನ್ನು ಆನಂದಿಸಿ, ಮತ್ತು ಮೈಸೂರಿನ ಶ್ರೀಮಂತ ಸಂಸ್ಕೃತಿಯನ್ನು ಅನುಭವಿಸಿ.',
+      tag_tradition: 'ಸಂಪ್ರದಾಯ',
+      tag_celebration: 'ಸಂಭ್ರಮ',
+      tag_event: 'ಕಾರ್ಯಕ್ರಮ',
+      tag_entertainment: 'ಮನರಂಜನೆ',
+      cat_head_title: 'ಆರು ಪ್ರಪಂಚಗಳು, ಒಂದೇ ವೇದಿಕೆ.',
+      cat_head_sub: 'ಪ್ರತಿಯೊಂದು ಮಳಿಗೆಯೂ ವಿಶೇಷ: ನೈಜ ಕುಶಲಕರ್ಮಿಗಳು, ಪ್ರಾಮಾಣಿಕ ಸಾಮಗ್ರಿಗಳು ಮತ್ತು ಸ್ಫೂರ್ತಿದಾಯಕ ಕಥೆಗಳು.',
+      cat1_tag: '01 ಕಲೆ',
+      cat1_title: 'ಕರಕುಶಲ ವಸ್ತುಗಳು',
+      cat1_desc: 'ಮಣ್ಣಿನ ಮಡಕೆಗಳು, ಬಿದಿರಿನ ವಸ್ತುಗಳು, ಕೈಯಿಂದ ರಚಿಸಿದ ಅಲಂಕಾರಿಕ ಕಲಾಕೃತಿಗಳು, ಬ್ಲಾಕ್ ಪ್ರಿಂಟಿಂಗ್ ಮತ್ತು ಕೈಮಗ್ಗ ಜವಳಿ ಕಲೆ.',
+      cat2_tag: '02 ಉಡುಪು',
+      cat2_title: 'ಉಡುಪುಗಳು & ಸೀರೆಗಳು',
+      cat2_desc: 'ಸಾಂಪ್ರದಾಯಿಕ ಸೀರೆಗಳು, ಎಥ್ನಿಕ್ ಉಡುಪುಗಳು, ಸಮಕಾಲೀನ ಫ್ಯಾಷನ್ ಮತ್ತು ಪುನರ್ಬಳಕೆಯ ಪರಿಸರ ಸ್ನೇಹಿ ವಸ್ತ್ರಗಳು.',
+      cat3_tag: '03 ಆಭರಣ',
+      cat3_title: 'ಆಭರಣಗಳು',
+      cat3_desc: 'ಕೈಯಿಂದ ತಯಾರಿಸಿದ ಬೆಳ್ಳಿ ಆಭರಣಗಳು, ಟೆರ್ರಾಕೋಟಾ ಮತ್ತು ನೂಲಿನ ಆಭರಣಗಳು ಹಾಗೂ ನಿತ್ಯದ ಮತ್ತು ಹಬ್ಬದ ವಿನ್ಯಾಸಗಳು.',
+      cat4_tag: '04 ಜಾಗೃತಿ',
+      cat4_title: 'ಸುಸ್ಥಿರ ಮತ್ತು ಪರಿಸರ ಸ್ನೇಹಿ',
+      cat4_desc: 'ಶೂನ್ಯ ತ್ಯಾಜ್ಯದ ವಸ್ತುಗಳು, ನೈಸರ್ಗಿಕ ಬಣ್ಣಗಳು, ಸಾವಯವ ತ್ವಚಾ ಉತ್ಪನ್ನಗಳು ಮತ್ತು ದಿನಬಳಕೆಯ ಪರಿಸರ ಸ್ನೇಹಿ ಸಾಮಗ್ರಿಗಳು.',
+      cat5_tag: '05 ರುಚಿ',
+      cat5_title: 'ಸ್ಥಳೀಯ ತಿನಿಸುಗಳು',
+      cat5_desc: 'ಮೈಸೂರಿನ ವಿಶಿಷ್ಟ ರುಚಿಗಳು, ಮನೆಯೂಟ, ಆರೋಗ್ಯಕರ ತಿಂಡಿಗಳು ಮತ್ತು ಸಣ್ಣ ಅಡುಗೆಮನೆಗಳಿಂದ ತಯಾರಿಸಿದ ಹಬ್ಬದ ತಿನಿಸುಗಳು.',
+      cat6_tag: '06 ಲೈವ್',
+      cat6_title: 'ಅನುಭವಗಳು ಮತ್ತು ಪ್ರದರ್ಶನಗಳು',
+      cat6_desc: 'ನೇರ ಸಂಗೀತ, ಶಾಸ್ತ್ರೀಯ ಮತ್ತು ಜಾನಪದ ನೃತ್ಯಗಳು ಹಾಗೂ ನಿಮ್ಮ ಕೈಯಾರೆ ಕಲಾಕೃತಿಗಳನ್ನು ರಚಿಸುವ ಕಾರ್ಯಾಗಾರಗಳು.',
+      aud_vendors_eyebrow: 'ಮಾರಾಟಗಾರರು ಮತ್ತು ಉದ್ಯಮಿಗಳಿಗಾಗಿ',
+      aud_vendors_title: 'ಸ್ಥಳೀಯ ತಯಾರಕರಿಗೆ ಬಲವಾದ ಬೆಂಬಲ.',
+      aud_vendors_desc: 'ಮಹಿಳಾ ಉದ್ಯಮಿಗಳು, ಯುವ ತಯಾರಕರು ಮತ್ತು ಹೊಸದಾಗಿ ಆರಂಭಿಸುತ್ತಿರುವ ಸಣ್ಣ ವ್ಯಾಪಾರಿಗಳಿಗೆ ನೈಜ ಗ್ರಾಹಕರ ಸಂಪರ್ಕ ಮತ್ತು ಬ್ರ್ಯಾಂಡ್ ನಿರ್ಮಾಣಕ್ಕೆ ನೇರ ವೇದಿಕೆ.',
+      aud_vendors_cta: 'ಮಾರಾಟಗಾರರಾಗಿ ನೋಂದಾಯಿಸಿ',
+      aud_visitors_eyebrow: 'ಸಂದರ್ಶಕರಿಗಾಗಿ',
+      aud_visitors_title: 'ಅರ್ಥಪೂರ್ಣವಾಗಿ ಶಾಪಿಂಗ್ ಮಾಡಿ.',
+      aud_visitors_desc: 'ವಸ್ತುಗಳ ಹಿಂದಿರುವ ಕುಶಲಕರ್ಮಿಗಳನ್ನು ಭೇಟಿ ಮಾಡಿ, ಸ್ಥಳೀಯ ಮತ್ತು ಸುಸ್ಥಿರ ಬ್ರ್ಯಾಂಡ್‌ಗಳನ್ನು ಅನ್ವೇಷಿಸಿ, ಕುಟುಂಬ ಮತ್ತು ಸ್ನೇಹಿತರೊಂದಿಗೆ ಆಹಾರ, ಸಂಗೀತ ಮತ್ತು ಕಲೆಯ ದಿನವನ್ನು ಕಳೆಯಿರಿ.',
+      aud_visitors_cta: 'ವೇಳಾಪಟ್ಟಿ ವೀಕ್ಷಿಸಿ',
+      sched_eyebrow: 'ದಿನಾಂಕಗಳನ್ನು ಗುರುತಿಸಿಕೊಳ್ಳಿ',
+      sched_title: 'ಮೂರು ದಿನಗಳ ಶಾಪಿಂಗ್, ಆಹಾರ ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ ಸಂಭ್ರಮ - ನೆಕ್ಸಸ್ ಸೆಂಟರ್ ಸಿಟಿ ಮಾಲ್, ಮೈಸೂರು.',
+      ticket1_label: 'ಮೊದಲ ದಿನ',
+      ticket2_label: 'ಎರಡನೇ ದಿನ',
+      ticket3_label: 'ಮೂರನೇ ದಿನ',
+      ticket_time: 'ಬೆಳಿಗ್ಗೆ 10:00 ರಿಂದ ರಾತ್ರಿ 9:00',
+      sched_venue_line: '📍 ನೆಕ್ಸಸ್ ಸೆಂಟರ್ ಸಿಟಿ ಮಾಲ್, ಮೈಸೂರು • ಅಲ್ಲಿ ಭೇಟಿಯಾಗೋಣ.',
+      gal_eyebrow: 'ಕ್ಷಣಚಿತ್ರಗಳು',
+      gal_title: 'ಹಿಂದಿನ ಆವೃತ್ತಿಗಳಿಂದ.',
+      gal1: 'ಕರಕುಶಲ ಮಳಿಗೆಗಳು',
+      gal2: 'ಲೈವ್ ಪ್ರದರ್ಶನ',
+      gal3: 'ದೀಪಾಲಂಕಾರ',
+      gal4: 'ಆಹಾರ ಮಳಿಗೆಗಳು',
+      gal5: 'ಉಡುಪುಗಳ ಶೋ',
+      gal6: 'ಕಾರ್ಯಾಗಾರಗಳು',
+      contact_eyebrow: 'ಸಂಪರ್ಕಿಸಿ',
+      contact_title: 'ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ.',
+      contact_sub: 'ಉತ್ಸವದ ಕುರಿತು ಪ್ರಶ್ನೆಗಳು, ಮಳಿಗೆ ನೋಂದಣಿ ಅಥವಾ ಮಾರ್ಗದರ್ಶನಕ್ಕಾಗಿ ಯಾವುದೇ ಸಮಯದಲ್ಲಿ ಸಂಪರ್ಕಿಸಿ.',
+      contact_call_label: 'ಕರೆ ಮಾಡಿ',
+      contact_ig_label: 'ಇನ್‌ಸ್ಟಾಗ್ರಾಮ್',
+      contact_venue_label: 'ಸ್ಥಳ',
+      contact_venue_val: 'ನೆಕ್ಸಸ್ ಸೆಂಟರ್ ಸಿಟಿ ಮಾಲ್, ಮೈಸೂರು',
+      foot_note: 'ಮೈಸೂರಿನ ಕರಕುಶಲತೆ, ಆಹಾರ ಮತ್ತು ಸಂಸ್ಕೃತಿಯನ್ನು ಆಚರಿಸುವ ಒಂದು ಜಾಗೃತ ಶಾಪಿಂಗ್ ಹಬ್ಬ.'
+    }
+  };
+
+  var rotatorWords = {
+    en: ['local food', 'live music', 'handloom apparel', 'artisan jewellery', 'handmade decor', 'creative workshops', 'festive treats', 'stage performances'],
+    kn: ['ಸ್ಥಳೀಯ ತಿನಿಸುಗಳು', 'ಲೈವ್ ಸಂಗೀತ', 'ಕೈಮಗ್ಗ ಉಡುಪುಗಳು', 'ಆಭರಣಗಳು', 'ಕರಕುಶಲ ಕಲೆ', 'ಕಾರ್ಯಾಗಾರಗಳು', 'ಹಬ್ಬದ ಸಿಹಿಗಳು', 'ರಂಗ ಪ್ರದರ್ಶನಗಳು']
+  };
+
+  var currentLang = 'en';
+
+  function setLanguage(lang){
+    if(!i18n[lang]) return;
+    currentLang = lang;
+
+    // Update active class on toggle buttons
+    document.querySelectorAll('#langToggle button').forEach(function(btn){
+      if(btn.getAttribute('data-lang') === lang){
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+
+    // Update all data-i18n elements
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var key = el.getAttribute('data-i18n');
+      if(i18n[lang][key] !== undefined){
+        el.innerHTML = i18n[lang][key];
+      }
+    });
+
+    // Reset rotating word
+    var rotatorWrap = document.getElementById('rotatorWrap');
+    if(rotatorWrap){
+      rotatorWrap.innerHTML = '<span class="rotator-word active">' + rotatorWords[lang][0] + '</span>';
+      currentRotatorIndex = 0;
+    }
+
+    try {
+      localStorage.setItem('mysuru_utsava_lang', lang);
+    } catch(e){}
+  }
+
+  // Language toggle clicks
+  document.querySelectorAll('#langToggle button').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var lang = this.getAttribute('data-lang');
+      setLanguage(lang);
+    });
+  });
+
+  // Load persisted language preference if present
+  try {
+    var savedLang = localStorage.getItem('mysuru_utsava_lang');
+    if(savedLang && i18n[savedLang]){
+      setLanguage(savedLang);
+    }
+  } catch(e){}
+
+  // Dynamic Word Rotator (Cycles every 3 seconds)
+  var currentRotatorIndex = 0;
+  setInterval(function(){
+    var rotatorWrap = document.getElementById('rotatorWrap');
+    if(!rotatorWrap) return;
+    
+    var words = rotatorWords[currentLang] || rotatorWords.en;
+    var currentWordEl = rotatorWrap.querySelector('.rotator-word:not(.out)');
+    if(!currentWordEl) return;
+    
+    currentWordEl.classList.remove('active');
+    currentWordEl.classList.add('out');
+    
+    setTimeout(function(){
+      if(currentWordEl && currentWordEl.parentNode){
+        currentWordEl.remove();
+      }
+    }, 450);
+    
+    currentRotatorIndex = (currentRotatorIndex + 1) % words.length;
+    var newWordEl = document.createElement('span');
+    newWordEl.className = 'rotator-word';
+    newWordEl.textContent = words[currentRotatorIndex];
+    rotatorWrap.appendChild(newWordEl);
+    
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        newWordEl.classList.add('active');
+      });
+    });
+  }, 3000);
+
+  // Mobile Navigation Toggle
+  var navToggle = document.getElementById('navToggle');
+  var navLinksMenu = document.getElementById('navLinks');
+  if(navToggle && navLinksMenu){
+    navToggle.addEventListener('click', function(){
+      navLinksMenu.classList.toggle('open');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(function(link){
+      link.addEventListener('click', function(){
+        navLinksMenu.classList.remove('open');
+      });
+    });
+  }
+
+  // Scroll Progress Bar, Scrolled Header, Back to Top, and ScrollSpy
+  var header = document.getElementById('header');
+  var scrollProgress = document.getElementById('scrollProgress');
+  var backToTop = document.getElementById('backToTop');
+  var navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+  var sections = document.querySelectorAll('section[id]');
+
+  window.addEventListener('scroll', function(){
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    
+    // Top reading progress indicator
+    if(scrollProgress && docHeight > 0){
+      var percent = (scrollTop / docHeight) * 100;
+      scrollProgress.style.width = percent + '%';
+    }
+
+    // Scrolled Header Elevation
+    if(header){
+      if(scrollTop > 40){
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    }
+
+    // Floating Back to Top Button Visibility
+    if(backToTop){
+      if(scrollTop > 380){
+        backToTop.classList.add('show');
+      } else {
+        backToTop.classList.remove('show');
+      }
+    }
+
+    // ScrollSpy Active Link Sync
+    var scrollPos = scrollTop + 140;
+    sections.forEach(function(sec){
+      var top = sec.offsetTop;
+      var height = sec.offsetHeight;
+      var id = sec.getAttribute('id');
+      if(scrollPos >= top && scrollPos < top + height){
+        navLinks.forEach(function(link){
+          if(link.getAttribute('href') === '#' + id){
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+    });
+  }, { passive: true });
+
+  // Smooth scroll back to top
+  if(backToTop){
+    backToTop.addEventListener('click', function(){
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // Scroll Reveal Animations via IntersectionObserver
+  var revealElements = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var revealObserver = new IntersectionObserver(function(entries, observer){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: null,
+      rootMargin: '0px 0px -40px 0px',
+      threshold: 0.08
+    });
+
+    revealElements.forEach(function(el){
+      revealObserver.observe(el);
+    });
+  } else {
+    revealElements.forEach(function(el){ el.classList.add('visible'); });
+  }
+
+  // Live Festival Countdown Timer
+  function initCountdown(){
+    var cdDays = document.getElementById('cdDays');
+    var cdHours = document.getElementById('cdHours');
+    var cdMins = document.getElementById('cdMins');
+    var cdSecs = document.getElementById('cdSecs');
+    if(!cdDays || !cdHours || !cdMins || !cdSecs) return;
+
+    var now = new Date();
+    var targetDate = new Date(now.getFullYear(), now.getMonth(), 11, 10, 0, 0);
+    if(now.getTime() >= targetDate.getTime()){
+      targetDate = new Date(now.getFullYear(), now.getMonth() + 1, 11, 10, 0, 0);
+    }
+
+    function updateTimer(){
+      var current = new Date().getTime();
+      var distance = targetDate.getTime() - current;
+      if(distance < 0) distance = 0;
+
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      cdDays.textContent = String(days).padStart(2, '0');
+      cdHours.textContent = String(hours).padStart(2, '0');
+      cdMins.textContent = String(minutes).padStart(2, '0');
+      cdSecs.textContent = String(seconds).padStart(2, '0');
+    }
+
+    updateTimer();
+    setInterval(updateTimer, 1000);
+  }
+  initCountdown();
+</script>
+
+</body>
+</html>
