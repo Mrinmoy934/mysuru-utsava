@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mysuru Utsava | A Conscious Shopping Festival</title>
+<title>Mysuru Utsava 2026 | A Conscious People's Festival</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -15,7 +15,9 @@
     --gold:#DFA02E;
     --gold-dark:#A9781F;
     --terracotta:#C2532A;
-    --green:#4A6741;
+    --green:#2E5A36;
+    --green-light:#4A6741;
+    --green-pale:#EAF2E8;
     --charcoal:#1A1A1A;
     --ink:#241933;
     --muted:#54465F;
@@ -57,11 +59,17 @@
   }
   .btn:hover{ transform:translateY(-2px); }
   .btn-primary{
+    background:var(--green);
+    color:#FFFFFF;
+    box-shadow:0 4px 0 #1D3B23;
+  }
+  .btn-primary:hover{ box-shadow:0 6px 0 #1D3B23; background:#23472B; }
+  .btn-secondary{
     background:var(--gold);
     color:var(--charcoal);
     box-shadow:0 4px 0 var(--gold-dark);
   }
-  .btn-primary:hover{ box-shadow:0 6px 0 var(--gold-dark); background:#e8a938; }
+  .btn-secondary:hover{ box-shadow:0 6px 0 var(--gold-dark); background:#e8a938; }
   .btn-outline{
     border-color:var(--charcoal);
     color:var(--charcoal);
@@ -75,6 +83,36 @@
     box-shadow:0 3px 10px rgba(36,25,51,0.06);
   }
   .btn-light:hover{ background:var(--paper-light); }
+
+  /* ---------- TOP ANNOUNCEMENT BAR ---------- */
+  .top-bar{
+    background:var(--green);
+    color:#FFFFFF;
+    font-size:13px;
+    font-weight:600;
+    text-align:center;
+    padding:8px 16px;
+    letter-spacing:.02em;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .top-bar span.badge{
+    background:var(--gold);
+    color:var(--charcoal);
+    padding:2px 8px;
+    border-radius:4px;
+    font-size:11px;
+    font-weight:700;
+    text-transform:uppercase;
+  }
+  .top-bar a{
+    color:var(--gold);
+    text-decoration:underline;
+    font-weight:700;
+  }
 
   /* ---------- NAV & SCROLLBAR ---------- */
   header{
@@ -90,7 +128,7 @@
   }
   .scroll-progress{
     position:absolute; bottom:0; left:0; height:3px; width:0%;
-    background:linear-gradient(90deg, var(--gold) 0%, var(--terracotta) 100%);
+    background:linear-gradient(90deg, var(--green) 0%, var(--gold) 50%, var(--terracotta) 100%);
     transition:width .08s linear;
     z-index:60;
   }
@@ -99,11 +137,11 @@
     padding:8px 28px;
   }
   .logo-brand{
-    display:inline-flex; align-items:center; gap:16px;
+    display:inline-flex; align-items:center; gap:14px;
     text-decoration:none;
   }
   .logo-img{
-    height:72px;
+    height:64px;
     width:auto;
     object-fit:contain;
     display:block;
@@ -111,12 +149,23 @@
     transition:transform .2s ease;
   }
   .logo-brand:hover .logo-img{ transform:scale(1.04); }
+  .logo-text-group{
+    display:flex; flex-direction:column;
+  }
+  .presenter-tag{
+    font-size:10.5px;
+    font-weight:700;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--green);
+    margin-bottom:2px;
+  }
   .logo-text{
-    font-family:'Fraunces', serif; font-weight:700; font-size:28px;
+    font-family:'Fraunces', serif; font-weight:700; font-size:24px;
     color:var(--charcoal); letter-spacing:.01em; line-height:1;
   }
   .logo-text span{ color:var(--terracotta); }
-  .nav-links{ display:flex; gap:32px; align-items:center; }
+  .nav-links{ display:flex; gap:28px; align-items:center; }
   .nav-links a{
     font-size:14.5px; font-weight:600; color:var(--charcoal);
     position:relative; padding:4px 0;
@@ -181,8 +230,8 @@
   .back-to-top svg{ width:22px; height:22px; stroke:currentColor; }
 
   @media (max-width:860px){
-    .logo-img{ height:56px; }
-    .logo-text{ font-size:22px; }
+    .logo-img{ height:50px; }
+    .logo-text{ font-size:20px; }
     .nav-links{
       position:absolute; top:100%; left:0; right:0;
       background:var(--cream); flex-direction:column; align-items:flex-start;
@@ -198,13 +247,13 @@
   .hero{
     background: var(--cream) url('hero.png') right bottom / cover no-repeat;
     color:var(--charcoal);
-    padding:60px 0 52px;
+    padding:52px 0 48px;
     overflow:hidden;
     position:relative;
   }
   .hero .wrap{ position:relative; z-index:2; }
   .hero-content{
-    max-width:540px;
+    max-width:580px;
     margin-right:auto;
     text-align:left;
   }
@@ -216,16 +265,19 @@
   .hero-motif::before{
     content:''; position:absolute; inset:44px; border:1px solid rgba(36,25,51,0.04); border-radius:50%;
   }
-  .hero-eyebrow{
-    color:var(--terracotta); font-size:13px; letter-spacing:.16em; text-transform:uppercase;
-    font-weight:700; margin-bottom:12px; display:flex; align-items:center; gap:10px;
+  .hero-presenter{
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(46,90,54,0.1); border:1px solid rgba(46,90,54,0.25);
+    padding:6px 14px; border-radius:999px;
+    font-size:12.5px; letter-spacing:.12em; text-transform:uppercase;
+    font-weight:700; color:var(--green);
+    margin-bottom:16px;
   }
   .hero h1{
     color:var(--charcoal, #1A1A1A);
-    font-size:clamp(32px, 4.5vw, 56px);
+    font-size:clamp(32px, 4.2vw, 54px);
     line-height:1.15;
     font-weight:600;
-    max-width:540px;
     margin:0;
   }
   .hero h1 em{
@@ -234,7 +286,7 @@
   .rotator-wrap{
     display:inline-flex;
     position:relative;
-    color:var(--terracotta);
+    color:var(--green);
     vertical-align:bottom;
     overflow:hidden;
     height:1.2em;
@@ -257,36 +309,44 @@
     position:absolute;
   }
   .hero p.lede{
-    font-size:17px; line-height:1.6; max-width:480px;
+    font-size:16.5px; line-height:1.6; max-width:520px;
     margin:14px 0 0;
     color:#463A55;
   }
+  .hero-pillars{
+    display:flex; flex-wrap:wrap; gap:12px; margin-top:16px; font-size:13.5px; font-weight:600; color:var(--green);
+  }
+  .hero-pillar-item{
+    display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.7);
+    padding:5px 12px; border-radius:8px; border:1px solid rgba(46,90,54,0.15);
+  }
   .hero-meta{
-    margin-top:22px; display:flex; flex-wrap:wrap; gap:12px; align-items:center;
+    margin-top:22px; display:flex; flex-wrap:wrap; gap:12px; align-items:stretch;
   }
   .date-badge{
     display:flex; align-items:center; gap:12px;
-    background:rgba(251,241,228,0.92);
+    background:rgba(251,241,228,0.95);
     border:1px solid var(--line);
     padding:10px 18px; border-radius:14px;
     box-shadow:0 4px 12px rgba(36,25,51,0.06);
     backdrop-filter:blur(6px);
   }
-  .date-badge .nums{ display:flex; gap:6px; }
-  .date-badge .nums span{
-    font-family:'Fraunces', serif; font-size:24px; font-weight:600; color:var(--terracotta);
+  .date-badge .nums{ display:flex; gap:6px; align-items:baseline; }
+  .date-badge .nums span.day-main{
+    font-family:'Fraunces', serif; font-size:22px; font-weight:700; color:var(--terracotta);
   }
-  .date-badge .divider-dot{ opacity:.5; font-size:18px; color:var(--ink); }
+  .date-badge .divider-dot{ opacity:.5; font-size:16px; color:var(--ink); }
   .date-badge .meta-text{ font-size:12.5px; line-height:1.35; color:#54465F; }
   .venue-pill{
-    font-size:13px; font-weight:600; padding:10px 16px; border-radius:999px;
+    display:flex; align-items:center; gap:8px;
+    font-size:13px; font-weight:600; padding:10px 16px; border-radius:14px;
     border:1px solid var(--line); color:var(--charcoal);
-    background:rgba(251,241,228,0.92);
+    background:rgba(251,241,228,0.95);
     box-shadow:0 4px 12px rgba(36,25,51,0.06);
     backdrop-filter:blur(6px);
   }
   .hero-countdown{
-    margin-top:20px;
+    margin-top:18px;
     background:rgba(251,241,228,0.95);
     border:1px solid var(--line);
     padding:12px 18px;
@@ -380,6 +440,38 @@
     .date-badge, .venue-pill{ width:100%; justify-content:center; }
   }
 
+  /* ---------- POLICY BANNER ---------- */
+  .policy-banner{
+    background:#1E3E26;
+    color:#FFFFFF;
+    padding:24px 0;
+    border-top:1px solid rgba(255,255,255,0.1);
+    border-bottom:1px solid rgba(255,255,255,0.1);
+  }
+  .policy-content{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    flex-wrap:wrap;
+  }
+  .policy-text{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    font-size:15px;
+    line-height:1.5;
+  }
+  .policy-icon{
+    font-size:24px;
+    flex-shrink:0;
+  }
+  .policy-tagline{
+    font-weight:700;
+    color:var(--gold);
+    letter-spacing:.03em;
+  }
+
   /* ---------- ABOUT ---------- */
   .about{
     padding:88px 0 74px;
@@ -389,16 +481,17 @@
   .about-grid{
     display:grid; grid-template-columns:1fr 1.15fr; gap:64px; align-items:start;
   }
-  .about h2{ font-size:clamp(30px,4vw,44px); line-height:1.1; max-width:380px; }
+  .about h2{ font-size:clamp(30px,4vw,44px); line-height:1.1; max-width:420px; }
   .about-copy p{ font-size:16.5px; line-height:1.75; color:#463A55; margin:0 0 18px; }
   .tags{ display:flex; flex-wrap:wrap; gap:10px; margin-top:26px; }
   .tag{
     font-size:13px; font-weight:600; padding:8px 16px; border-radius:999px;
     border:1.5px solid var(--charcoal); color:var(--charcoal); background:rgba(255,255,255,0.6);
   }
-  .tag:nth-child(2){ border-color:var(--terracotta); color:var(--terracotta); background:rgba(194,83,42,0.06); }
-  .tag:nth-child(3){ border-color:var(--green); color:var(--green); background:rgba(74,103,65,0.06); }
-  .tag:nth-child(4){ border-color:var(--gold-dark); color:var(--gold-dark); background:rgba(223,160,46,0.08); }
+  .tag:nth-child(1){ border-color:var(--green); color:var(--green); background:rgba(46,90,54,0.08); }
+  .tag:nth-child(2){ border-color:var(--terracotta); color:var(--terracotta); background:rgba(194,83,42,0.08); }
+  .tag:nth-child(3){ border-color:var(--gold-dark); color:var(--gold-dark); background:rgba(223,160,46,0.1); }
+  .tag:nth-child(4){ border-color:var(--charcoal); color:var(--charcoal); background:rgba(255,255,255,0.7); }
 
   /* ---------- CATEGORIES ---------- */
   .categories{
@@ -406,15 +499,15 @@
     background:#FCF6EE;
     border-bottom:1px solid rgba(36,25,51,0.06);
   }
-  .cat-head{ margin-bottom:40px; max-width:640px; text-align:left; }
+  .cat-head{ margin-bottom:40px; max-width:680px; text-align:left; }
   .cat-head h2{ font-size:clamp(28px,4vw,42px); margin:0 0 12px; }
-  .cat-head p{ max-width:560px; font-size:16px; color:#54465F; line-height:1.6; margin:0; }
+  .cat-head p{ max-width:620px; font-size:16px; color:#54465F; line-height:1.6; margin:0; }
   .cat-grid{
-    display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:18px;
   }
   .cat-card{
     background:#F8EFE4;
-    border-radius:20px;
+    border-radius:18px;
     border:1px solid rgba(36,25,51,0.08);
     overflow:hidden;
     display:flex; flex-direction:column;
@@ -427,7 +520,7 @@
     box-shadow:0 12px 28px rgba(36,25,51,0.08);
   }
   .cat-img-wrap{
-    width:100%; height:170px; overflow:hidden; position:relative; background:#EFE3CF;
+    width:100%; height:150px; overflow:hidden; position:relative; background:#EFE3CF;
   }
   .cat-img-wrap img{
     width:100%; height:100%; object-fit:cover; display:block;
@@ -437,16 +530,16 @@
     transform:scale(1.06);
   }
   .cat-body{
-    padding:22px 20px 24px;
+    padding:18px 16px 20px;
     display:flex; flex-direction:column; flex:1; justify-content:space-between;
   }
-  .cat-num{ font-size:12px; font-weight:700; letter-spacing:.12em; color:var(--terracotta); text-transform:uppercase; margin-bottom:8px; }
-  .cat-card h3{ font-size:20px; margin:0 0 10px; color:var(--charcoal); }
-  .cat-card p{ font-size:14px; line-height:1.6; color:#54465F; margin:0; }
-  @media (max-width:920px){ .cat-grid{ grid-template-columns:repeat(2,1fr); gap:16px; } }
-  @media (max-width:600px){ .cat-grid{ grid-template-columns:1fr; } }
+  .cat-num{ font-size:11.5px; font-weight:700; letter-spacing:.12em; color:var(--green); text-transform:uppercase; margin-bottom:6px; }
+  .cat-card h3{ font-size:18px; margin:0 0 8px; color:var(--charcoal); }
+  .cat-card p{ font-size:13.5px; line-height:1.55; color:#54465F; margin:0; }
+  @media (max-width:1024px){ .cat-grid{ grid-template-columns:repeat(2,1fr); gap:16px; } }
+  @media (max-width:580px){ .cat-grid{ grid-template-columns:1fr; } }
 
-  /* ---------- WHO IS IT FOR ---------- */
+  /* ---------- AUDIENCE ---------- */
   .audience{
     padding:92px 0 96px;
     background:#F4EDE3;
@@ -454,19 +547,21 @@
   }
   .audience-grid{ display:grid; grid-template-columns:1fr 1fr; gap:28px; }
   .aud-card{
-    border-radius:24px; padding:44px 38px; position:relative; overflow:hidden;
+    border-radius:24px; padding:40px 36px; position:relative; overflow:hidden;
     border:1px solid rgba(36,25,51,0.08);
     box-shadow:0 6px 20px rgba(36,25,51,0.04);
   }
-  .aud-card.vendors{ background:#F7E5D0; color:var(--charcoal); }
-  .aud-card.visitors{ background:#EBF1E8; color:var(--charcoal); }
+  .aud-card.vendors{ background:#EBF2E8; color:var(--charcoal); }
+  .aud-card.visitors{ background:#F7E5D0; color:var(--charcoal); }
   .aud-card .eyebrow2{
     font-size:12.5px; letter-spacing:.14em; text-transform:uppercase; font-weight:700;
-    color:var(--terracotta); margin-bottom:16px;
+    color:var(--green); margin-bottom:16px;
   }
-  .aud-card.visitors .eyebrow2{ color:var(--green); }
-  .aud-card h3{ color:var(--charcoal); font-size:26px; margin-bottom:16px; max-width:280px; }
-  .aud-card p{ font-size:15px; line-height:1.7; color:#463A55; margin:0 0 26px; max-width:400px; }
+  .aud-card.visitors .eyebrow2{ color:var(--terracotta); }
+  .aud-card h3{ color:var(--charcoal); font-size:26px; margin-bottom:16px; max-width:320px; }
+  .aud-card p{ font-size:15px; line-height:1.7; color:#463A55; margin:0 0 24px; max-width:440px; }
+  .aud-contacts{ display:flex; flex-direction:column; gap:8px; margin-bottom:24px; font-weight:600; font-size:14.5px; }
+  .aud-contacts a{ color:var(--green); text-decoration:underline; }
   @media (max-width:860px){ .audience-grid{ grid-template-columns:1fr; } }
 
   /* ---------- SCHEDULE ---------- */
@@ -476,14 +571,15 @@
     color:var(--charcoal);
     border-bottom:1px solid rgba(36,25,51,0.08);
   }
-  .schedule .eyebrow{ color:var(--terracotta); }
-  .schedule h2{ color:var(--charcoal); font-size:clamp(28px,4vw,42px); margin-bottom:48px; max-width:520px; }
-  .tickets{ display:grid; grid-template-columns:repeat(3,1fr); gap:26px; }
+  .schedule .eyebrow{ color:var(--green); }
+  .schedule h2{ color:var(--charcoal); font-size:clamp(28px,4vw,42px); margin-bottom:48px; max-width:580px; }
+  .tickets{ display:grid; grid-template-columns:repeat(2,1fr); gap:30px; max-width:840px; margin:0 auto; }
   .ticket{
-    background:#FFFFFF; color:var(--charcoal); border-radius:16px;
-    padding:30px 26px; position:relative;
+    background:#FFFFFF; color:var(--charcoal); border-radius:18px;
+    padding:34px 30px; position:relative;
     border:1px solid rgba(36,25,51,0.08);
-    box-shadow:0 6px 18px rgba(36,25,51,0.06);
+    box-shadow:0 8px 24px rgba(36,25,51,0.06);
+    text-align:center;
   }
   .ticket::before, .ticket::after{
     content:''; position:absolute; top:50%; width:24px; height:24px;
@@ -492,14 +588,15 @@
   }
   .ticket::before{ left:-13px; }
   .ticket::after{ right:-13px; }
-  .ticket .day-label{ font-size:12.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--terracotta); }
-  .ticket .day-num{ font-family:'Fraunces',serif; font-size:52px; font-weight:600; margin:6px 0 14px; line-height:1; color:var(--charcoal); }
+  .ticket .day-label{ font-size:13px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--green); }
+  .ticket .day-num{ font-family:'Fraunces',serif; font-size:48px; font-weight:700; margin:8px 0 4px; line-height:1; color:var(--terracotta); }
+  .ticket .day-date{ font-size:16px; font-weight:700; color:var(--charcoal); margin-bottom:14px; }
   .ticket .day-time{ font-size:14.5px; font-weight:600; border-top:1px solid var(--line); padding-top:14px; color:#54465F; }
   .venue-line{
-    margin-top:40px; display:flex; align-items:center; gap:12px;
-    font-size:15px; color:#54465F;
+    margin-top:48px; display:flex; align-items:center; justify-content:center; gap:12px;
+    font-size:16px; font-weight:600; color:#54465F; text-align:center;
   }
-  @media (max-width:760px){ .tickets{ grid-template-columns:1fr; } }
+  @media (max-width:680px){ .tickets{ grid-template-columns:1fr; } }
 
   /* ---------- GALLERY ---------- */
   .gallery{
@@ -551,24 +648,26 @@
   }
   .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:60px; }
   .contact h2{ font-size:clamp(28px,4vw,42px); margin-bottom:16px; }
-  .contact p.sub{ font-size:15.5px; color:#54465F; max-width:380px; line-height:1.6; }
-  .contact-list{ list-style:none; padding:0; margin:36px 0 0; display:flex; flex-direction:column; gap:22px; }
+  .contact p.sub{ font-size:15.5px; color:#54465F; max-width:400px; line-height:1.6; }
+  .contact-list{ list-style:none; padding:0; margin:32px 0 0; display:flex; flex-direction:column; gap:20px; }
   .contact-list li{ display:flex; align-items:center; gap:16px; }
   .contact-list .ic{
-    width:44px; height:44px; border-radius:50%; background:rgba(194,83,42,0.12);
-    color:var(--terracotta); display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    width:44px; height:44px; border-radius:50%; background:rgba(46,90,54,0.12);
+    color:var(--green); display:flex; align-items:center; justify-content:center; flex-shrink:0;
     font-size:18px;
   }
   .contact-list .label{ font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:#7D6B8D; font-weight:700; }
-  .contact-list .val{ font-size:16px; font-weight:600; color:var(--charcoal); }
+  .contact-list .val{ font-size:15.5px; font-weight:600; color:var(--charcoal); }
+  .contact-list .val a{ color:var(--green); }
+  .contact-list .val a:hover{ text-decoration:underline; }
   .map-box{
-    border-radius:20px; background:#FAF3EB; min-height:340px;
+    border-radius:20px; background:#FAF3EB; min-height:360px;
     height:100%; overflow:hidden; border:1px solid rgba(36,25,51,0.08);
     box-shadow:0 6px 18px rgba(36,25,51,0.06);
     position:relative;
   }
   .map-box iframe{
-    width:100%; height:100%; min-height:340px; border:0; display:block;
+    width:100%; height:100%; min-height:360px; border:0; display:block;
   }
   @media (max-width:860px){ .contact-grid{ grid-template-columns:1fr; } }
 
@@ -579,7 +678,7 @@
     padding:48px 0;
     border-top:1px solid rgba(36,25,51,0.12);
   }
-  .foot-grid{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+  .foot-grid{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; }
   .foot-links{ display:flex; gap:24px; font-size:13.5px; }
   .foot-links a{ color:var(--charcoal); font-weight:600; }
   .foot-links a:hover{ color:var(--terracotta); }
@@ -594,12 +693,21 @@
 </head>
 <body>
 
+<div class="top-bar">
+  <span class="badge" data-i18n="top_bar_badge">Stall Booking Open</span>
+  <span data-i18n="top_bar_text">Green Guru Youth Foundation Presents Mysuru Utsava 2026</span>
+  <a href="tel:+917795715495" data-i18n="top_bar_cta">Call +91 77957 15495 / +91 81475 28297</a>
+</div>
+
 <header id="header">
   <div class="scroll-progress" id="scrollProgress"></div>
   <nav class="wrap">
     <a href="#" class="logo-brand">
-      <img src="logo.png" alt="Mysuru Utsava" class="logo-img">
-      <span class="logo-text" data-i18n="brand_name">Mysuru <span>Utsava</span></span>
+      <img src="logo.png" alt="Mysuru Utsava Logo" class="logo-img">
+      <div class="logo-text-group">
+        <span class="presenter-tag" data-i18n="logo_presenter">Green Guru Youth Foundation</span>
+        <span class="logo-text" data-i18n="brand_name">Mysuru <span>Utsava</span></span>
+      </div>
     </a>
     <div class="nav-links" id="navLinks">
       <a href="#about" data-i18n="nav_about">About</a>
@@ -622,15 +730,27 @@
   <div class="hero-motif"></div>
   <div class="wrap">
     <div class="hero-content reveal">
-      <div class="hero-eyebrow" data-i18n="hero_eyebrow">A Conscious Shopping Festival</div>
-      <h1 id="heroHeadline"><span data-i18n="hero_head_prefix">A vibrant festival gathered around craft, culture & </span><span class="rotator-wrap" id="rotatorWrap"><span class="rotator-word active">local food</span></span><span data-i18n="hero_head_suffix">.</span></h1>
-      <p class="lede" data-i18n="hero_lede">Mysuru Utsava is a flea market re-imagined: a conscious bazaar built around celebration, not just commerce. Curated with intention, not mass-produced excess.</p>
+      <div class="hero-presenter" data-i18n="hero_presenter">🌱 Green Guru Youth Foundation Presents</div>
+      <h1 id="heroHeadline">
+        <span data-i18n="hero_head_prefix">A Conscious People’s Festival for </span>
+        <span class="rotator-wrap" id="rotatorWrap"><span class="rotator-word active">sustainable craft</span></span>
+        <span data-i18n="hero_head_suffix">.</span>
+      </h1>
+      <p class="lede" data-i18n="hero_lede">A celebration of conscious living, sustainability, traditional craftsmanship, wellness & mindful consumption. Bringing together sustainable products & local artisans from across India.</p>
+      <div class="hero-pillars">
+        <span class="hero-pillar-item">🌱 Rooted in culture</span>
+        <span class="hero-pillar-item">🍃 Inspired by nature</span>
+        <span class="hero-pillar-item">🌏 Driven by conscious living</span>
+      </div>
       <div class="hero-meta">
         <div class="date-badge">
-          <div class="nums"><span>11</span><span class="divider-dot">·</span><span>12</span><span class="divider-dot">·</span><span>13</span></div>
-          <div class="meta-text" data-i18n="hero_dates">Three days<br>10 AM to 10 PM</div>
+          <div class="nums">
+            <span class="day-main">31 Oct &amp; 01 Nov</span>
+          </div>
+          <div class="divider-dot">·</div>
+          <div class="meta-text" data-i18n="hero_dates">2026 (Sat &amp; Sun)<br>10:00 AM – 9:00 PM</div>
         </div>
-        <div class="venue-pill" data-i18n="hero_venue">📍 Nexus Centre City Mall, Mysuru</div>
+        <div class="venue-pill" data-i18n="hero_venue">📍 JCAC (Jagannatha Centre for Art &amp; Culture), Mysuru</div>
       </div>
       <div class="hero-countdown">
         <div class="countdown-label" data-i18n="cd_label">Festival Starts In</div>
@@ -645,27 +765,40 @@
         </div>
       </div>
       <div class="hero-ctas">
-        <a href="#schedule" class="btn btn-primary" data-i18n="hero_cta1">Plan your visit</a>
-        <a href="#contact" class="btn btn-outline" data-i18n="hero_cta2">Vendor enquiries</a>
+        <a href="#contact" class="btn btn-primary" data-i18n="hero_cta1">Book a Stall</a>
+        <a href="#schedule" class="btn btn-secondary" data-i18n="hero_cta2">Plan your visit</a>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="policy-banner">
+  <div class="wrap policy-content">
+    <div class="policy-text">
+      <span class="policy-icon">🚫</span>
+      <div>
+        <span class="policy-tagline" data-i18n="policy_tagline">Strict Conscious &amp; Sustainable Policy:</span>
+        <span data-i18n="policy_text">Only conscious &amp; sustainable brands allowed. No powerloom, fast fashion, or plastic-based products.</span>
+      </div>
+    </div>
+    <a href="#categories" class="btn btn-light" style="font-size:13px; padding:8px 18px;" data-i18n="policy_cta">Explore Categories</a>
   </div>
 </section>
 
 <section class="about" id="about">
   <div class="wrap about-grid">
     <div class="reveal">
-      <div class="eyebrow" data-i18n="about_eyebrow">What is it?</div>
-      <h2 data-i18n="about_title">More than a market.</h2>
+      <div class="eyebrow" data-i18n="about_eyebrow">Celebrating People, Planet &amp; Culture</div>
+      <h2 data-i18n="about_title">Experience. Connect. Be The Change.</h2>
     </div>
     <div class="about-copy reveal stagger-2">
-      <p data-i18n="about_p1">Mysuru Utsava brings together tradition, craft, food and performance under one roof, curated with intention rather than mass-produced excess.</p>
-      <p data-i18n="about_p2">Across three days, wander through handmade goods, taste local food, watch live performances, and take home a little more culture than you came with. Part bazaar, part festival, made for people who like to shop with meaning and celebrate while they're at it.</p>
+      <p data-i18n="about_p1">Green Guru Youth Foundation proudly presents Mysuru Utsava 2026 — a conscious bazaar reimagined for people who value authenticity, heritage, and environmental harmony.</p>
+      <p data-i18n="about_p2">Over two vibrant days at JCAC Mysuru, discover handloom textiles, handmade jewellery, natural skincare, sustainable home decor, and conscious food from passionate artisans across India.</p>
       <div class="tags">
-        <span class="tag" data-i18n="tag_tradition">Tradition</span>
-        <span class="tag" data-i18n="tag_celebration">Celebration</span>
-        <span class="tag" data-i18n="tag_event">Event</span>
-        <span class="tag" data-i18n="tag_entertainment">Fun & Entertainment</span>
+        <span class="tag" data-i18n="tag_tradition">Traditional Craftsmanship</span>
+        <span class="tag" data-i18n="tag_celebration">Conscious Living</span>
+        <span class="tag" data-i18n="tag_event">Eco-friendly Products</span>
+        <span class="tag" data-i18n="tag_entertainment">Arts &amp; Culture</span>
       </div>
     </div>
   </div>
@@ -674,84 +807,110 @@
 <section class="categories" id="categories">
   <div class="wrap">
     <div class="cat-head reveal">
-      <h2 data-i18n="cat_head_title">Six worlds, one venue.</h2>
-      <p data-i18n="cat_head_sub">Every stall is chosen with intention: real makers, honest materials, and stories worth knowing.</p>
+      <h2 data-i18n="cat_head_title">What We Are Looking For</h2>
+      <p data-i18n="cat_head_sub">Curated for conscious brands, eco-friendly creators, and traditional Indian artisans from across India.</p>
     </div>
     <div class="cat-grid">
       <div class="cat-card reveal stagger-1">
         <div class="cat-img-wrap">
-          <img src="images/cat_craft.jpg" alt="Art & Handicrafts" loading="lazy">
+          <img src="images/cat_craft.jpg" alt="Handloom Textiles" loading="lazy">
         </div>
         <div class="cat-body">
-          <div class="cat-num" data-i18n="cat1_tag">01 CRAFT</div>
+          <div class="cat-num" data-i18n="cat1_tag">01 TEXTILES</div>
           <div>
-            <h3 data-i18n="cat1_title">Art & Handicrafts</h3>
-            <p data-i18n="cat1_desc">Pottery and terracotta, bamboo & cane work, hand-painted decor, macrame, block printing and handloom textile art, made by the artisans themselves.</p>
+            <h3 data-i18n="cat1_title">Handloom &amp; Textiles</h3>
+            <p data-i18n="cat1_desc">Traditional weaves, hand-spun textiles, organic cottons, and authentic Indian handloom apparel. (No powerloom or fast fashion).</p>
           </div>
         </div>
       </div>
 
       <div class="cat-card reveal stagger-2">
         <div class="cat-img-wrap">
-          <img src="images/cat_apparel.jpg" alt="Apparel & Sarees" loading="lazy">
+          <img src="images/cat_jewellery.jpg" alt="Handmade Jewellery" loading="lazy">
         </div>
         <div class="cat-body">
-          <div class="cat-num" data-i18n="cat2_tag">02 WEAR</div>
+          <div class="cat-num" data-i18n="cat2_tag">02 JEWELLERY</div>
           <div>
-            <h3 data-i18n="cat2_title">Apparel</h3>
-            <p data-i18n="cat2_desc">Sarees and ethnic wear, indie fashion labels, upcycled and refashioned clothing, occasion wear, traditional roots with a contemporary edge.</p>
+            <h3 data-i18n="cat2_title">Handmade Jewellery</h3>
+            <p data-i18n="cat2_desc">Handcrafted silver, oxidized metal, terracotta, thread, and upcycled artisan jewellery designs.</p>
           </div>
         </div>
       </div>
 
       <div class="cat-card reveal stagger-3">
         <div class="cat-img-wrap">
-          <img src="images/cat_jewellery.jpg" alt="Handcrafted Jewellery" loading="lazy">
+          <img src="images/cat_apparel.jpg" alt="Sustainable Home Decor" loading="lazy">
         </div>
         <div class="cat-body">
-          <div class="cat-num" data-i18n="cat3_tag">03 ADORN</div>
+          <div class="cat-num" data-i18n="cat3_tag">03 DÉCOR</div>
           <div>
-            <h3 data-i18n="cat3_title">Jewellery</h3>
-            <p data-i18n="cat3_desc">Handcrafted silver and oxidised pieces, terracotta and fabric jewellery, and contemporary artisan designs for everyday and festive wear.</p>
+            <h3 data-i18n="cat3_title">Sustainable Home Décor</h3>
+            <p data-i18n="cat3_desc">Bamboo &amp; cane decor, hand-painted art, terracotta crafts, clayware, and eco-friendly home embellishments.</p>
           </div>
         </div>
       </div>
 
       <div class="cat-card reveal stagger-4">
         <div class="cat-img-wrap">
-          <img src="images/cat_sustainable.jpg" alt="Conscious & Sustainable" loading="lazy">
+          <img src="images/cat_sustainable.jpg" alt="Natural Skincare & Wellness" loading="lazy">
         </div>
         <div class="cat-body">
-          <div class="cat-num" data-i18n="cat4_tag">04 MINDFUL</div>
+          <div class="cat-num" data-i18n="cat4_tag">04 WELLNESS</div>
           <div>
-            <h3 data-i18n="cat4_title">Conscious & Sustainable</h3>
-            <p data-i18n="cat4_desc">Upcycled and zero-waste goods, natural dyes, organic skincare, reusable everyday products, made to last, not to be thrown away.</p>
+            <h3 data-i18n="cat4_title">Natural Skincare &amp; Wellness</h3>
+            <p data-i18n="cat4_desc">Organic soaps, natural remedies, botanical skincare, essential oils, and plastic-free wellness products.</p>
           </div>
         </div>
       </div>
 
       <div class="cat-card reveal stagger-5">
         <div class="cat-img-wrap">
-          <img src="images/cat_eatables.jpg" alt="Local Eatables & Sweets" loading="lazy">
+          <img src="images/workshop.jpg" alt="Eco Lifestyle Products" loading="lazy">
         </div>
         <div class="cat-body">
-          <div class="cat-num" data-i18n="cat5_tag">05 TASTE</div>
+          <div class="cat-num" data-i18n="cat5_tag">05 LIFESTYLE</div>
           <div>
-            <h3 data-i18n="cat5_title">Eatables</h3>
-            <p data-i18n="cat5_desc">Local flavours, homemade food, health-conscious snacks and traditional festival treats from small kitchens.</p>
+            <h3 data-i18n="cat5_title">Eco Lifestyle Products</h3>
+            <p data-i18n="cat5_desc">Zero-waste daily utilities, jute &amp; cloth bags, compostable goods, and earth-friendly lifestyle alternatives.</p>
           </div>
         </div>
       </div>
 
       <div class="cat-card reveal stagger-6">
         <div class="cat-img-wrap">
-          <img src="images/cat_experiences.jpg" alt="Experiences & Performances" loading="lazy">
+          <img src="images/handicrafts.jpg" alt="Upcycled Products" loading="lazy">
         </div>
         <div class="cat-body">
-          <div class="cat-num" data-i18n="cat6_tag">06 LIVE</div>
+          <div class="cat-num" data-i18n="cat6_tag">06 UPCYCLED</div>
           <div>
-            <h3 data-i18n="cat6_title">Experiences & Performances</h3>
-            <p data-i18n="cat6_desc">Live music and dance, cultural acts on stage, and hands-on workshops that let you make something with your own hands.</p>
+            <h3 data-i18n="cat6_title">Upcycled &amp; Recycled</h3>
+            <p data-i18n="cat6_desc">Creative products handcrafted from repurposed fabric, reclaimed wood, and recycled waste materials.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cat-card reveal stagger-1">
+        <div class="cat-img-wrap">
+          <img src="images/cat_experiences.jpg" alt="Traditional Artisans" loading="lazy">
+        </div>
+        <div class="cat-body">
+          <div class="cat-num" data-i18n="cat7_tag">07 ARTISANS</div>
+          <div>
+            <h3 data-i18n="cat7_title">Traditional Artisans</h3>
+            <p data-i18n="cat7_desc">Heritage folk art, traditional wood carvings, pottery, and indigenous Indian craft forms.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cat-card reveal stagger-2">
+        <div class="cat-img-wrap">
+          <img src="images/cat_eatables.jpg" alt="Conscious Food" loading="lazy">
+        </div>
+        <div class="cat-body">
+          <div class="cat-num" data-i18n="cat8_tag">08 FOOD</div>
+          <div>
+            <h3 data-i18n="cat8_title">Conscious Food</h3>
+            <p data-i18n="cat8_desc">Organic snacks, cold-pressed treats, traditional culinary delights, and natural farm produce.</p>
           </div>
         </div>
       </div>
@@ -762,56 +921,60 @@
 <section class="audience">
   <div class="wrap audience-grid">
     <div class="aud-card vendors reveal stagger-1">
-      <div class="eyebrow2" data-i18n="aud_vendors_eyebrow">For Vendors & Entrepreneurs</div>
-      <h3 data-i18n="aud_vendors_title">Built to support local makers.</h3>
-      <p data-i18n="aud_vendors_desc">Women entrepreneurs, men entrepreneurs, passion-led makers who turned a hobby into a business, and young or first-time entrepreneurs just getting started. Get real support, reach the right audience, and build your brand with genuine in-person exposure.</p>
-      <a href="tel:+918147528297" class="btn btn-primary" data-i18n="aud_vendors_cta">Apply as a vendor</a>
+      <div class="eyebrow2" data-i18n="aud_vendors_eyebrow">For Conscious Brands &amp; Artisans</div>
+      <h3 data-i18n="aud_vendors_title">Register Your Stall Today</h3>
+      <p data-i18n="aud_vendors_desc">If your brand aligns with the spirit of Mysuru Utsava, we would love to have you with us! Reach thousands of conscious consumers and showcase your sustainable creations.</p>
+      <div class="aud-contacts">
+        <div>📞 <a href="tel:+917795715495">+91 77957 15495</a></div>
+        <div>📞 <a href="tel:+918147528297">+91 81475 28297</a></div>
+        <div>📩 <a href="mailto:greenguruyouthfoundation@gmail.com">greenguruyouthfoundation@gmail.com</a></div>
+      </div>
+      <a href="tel:+917795715495" class="btn btn-primary" data-i18n="aud_vendors_cta">DM / Call for Stall Details</a>
     </div>
     <div class="aud-card visitors reveal stagger-2">
-      <div class="eyebrow2" data-i18n="aud_visitors_eyebrow">For Visitors</div>
-      <h3 data-i18n="aud_visitors_title">Shop with meaning.</h3>
-      <p data-i18n="aud_visitors_desc">Meet the makers behind what you buy, discover local and sustainable brands you won't find in a mall, and spend a day surrounded by food, music and craft. Come to shop, come to eat, come to watch a performance, or just come to see what Mysuru's small businesses are creating.</p>
-      <a href="#schedule" class="btn btn-outline" data-i18n="aud_visitors_cta">See the schedule</a>
+      <div class="eyebrow2" data-i18n="aud_visitors_eyebrow">For Visitors &amp; Enthusiasts</div>
+      <h3 data-i18n="aud_visitors_title">Shop, Learn &amp; Celebrate</h3>
+      <p data-i18n="aud_visitors_desc">Immerse yourself in live music &amp; cultural performances, interactive talks &amp; workshops, sustainable market shopping, and wholesome conscious food under the open Mysuru sky.</p>
+      <a href="#schedule" class="btn btn-outline" data-i18n="aud_visitors_cta">View Festival Dates</a>
     </div>
   </div>
 </section>
 
 <section class="schedule" id="schedule">
   <div class="wrap">
-    <div class="eyebrow reveal" data-i18n="sched_eyebrow">Save the dates</div>
-    <h2 class="reveal" data-i18n="sched_title">Three days of shopping, food and performances at Nexus Centre City Mall, Mysuru.</h2>
+    <div class="eyebrow reveal" data-i18n="sched_eyebrow">Mark Your Calendar</div>
+    <h2 class="reveal" data-i18n="sched_title">Two Days of Culture, Consciousness &amp; Community at JCAC, Mysuru.</h2>
     <div class="tickets">
       <div class="ticket reveal stagger-1">
         <div class="day-label" data-i18n="ticket1_label">Day One</div>
-        <div class="day-num">11</div>
-        <div class="day-time" data-i18n="ticket_time">10:00 AM to 10:00 PM</div>
+        <div class="day-num">31</div>
+        <div class="day-date" data-i18n="ticket1_date">October 2026 (Saturday)</div>
+        <div class="day-time" data-i18n="ticket_time">10:00 AM – 9:00 PM</div>
       </div>
       <div class="ticket reveal stagger-2">
         <div class="day-label" data-i18n="ticket2_label">Day Two</div>
-        <div class="day-num">12</div>
-        <div class="day-time" data-i18n="ticket_time">10:00 AM to 10:00 PM</div>
-      </div>
-      <div class="ticket reveal stagger-3">
-        <div class="day-label" data-i18n="ticket3_label">Day Three</div>
-        <div class="day-num">13</div>
-        <div class="day-time" data-i18n="ticket_time">10:00 AM to 10:00 PM</div>
+        <div class="day-num">01</div>
+        <div class="day-date" data-i18n="ticket2_date">November 2026 (Sunday)</div>
+        <div class="day-time" data-i18n="ticket_time">10:00 AM – 9:00 PM</div>
       </div>
     </div>
-    <div class="venue-line reveal stagger-4" data-i18n="sched_venue_line">📍 Nexus Centre City Mall, Mysuru • See you there.</div>
+    <div class="venue-line reveal stagger-3" data-i18n="sched_venue_line">
+      📍 Jagannatha Centre for Art &amp; Culture (JCAC), Mysuru • We look forward to welcoming you!
+    </div>
   </div>
 </section>
 
 <section class="gallery" id="gallery">
   <div class="wrap">
-    <div class="eyebrow reveal" data-i18n="gal_eyebrow">Moments</div>
-    <h2 class="reveal" data-i18n="gal_title">From past editions.</h2>
+    <div class="eyebrow reveal" data-i18n="gal_eyebrow">Festival Vibes</div>
+    <h2 class="reveal" data-i18n="gal_title">Culture. Consciousness. Change.</h2>
     <div class="gal-grid">
-      <div class="gal-item reveal stagger-1"><span data-i18n="gal1">Handicraft stalls</span></div>
-      <div class="gal-item reveal stagger-2"><span data-i18n="gal2">Live performance</span></div>
-      <div class="gal-item reveal stagger-3"><span data-i18n="gal3">Festival lights</span></div>
-      <div class="gal-item reveal stagger-4"><span data-i18n="gal4">Food corner</span></div>
-      <div class="gal-item reveal stagger-5"><span data-i18n="gal5">Apparel walk</span></div>
-      <div class="gal-item reveal stagger-6"><span data-i18n="gal6">Workshop corner</span></div>
+      <div class="gal-item reveal stagger-1"><span data-i18n="gal1">Handloom &amp; Artisan Crafts</span></div>
+      <div class="gal-item reveal stagger-2"><span data-i18n="gal2">Live Cultural Music</span></div>
+      <div class="gal-item reveal stagger-3"><span data-i18n="gal3">Conscious Gathering</span></div>
+      <div class="gal-item reveal stagger-4"><span data-i18n="gal4">Organic Food &amp; Snacks</span></div>
+      <div class="gal-item reveal stagger-5"><span data-i18n="gal5">Sustainable Fashion</span></div>
+      <div class="gal-item reveal stagger-6"><span data-i18n="gal6">Eco Talks &amp; Workshops</span></div>
     </div>
   </div>
 </section>
@@ -819,28 +982,47 @@
 <section class="contact" id="contact">
   <div class="wrap contact-grid">
     <div class="reveal stagger-1">
-      <div class="eyebrow" data-i18n="contact_eyebrow">Get in touch</div>
-      <h2 data-i18n="contact_title">Say hello.</h2>
-      <p class="sub" data-i18n="contact_sub">Questions about the festival, vendor applications, or just want directions? Reach out any time.</p>
+      <div class="eyebrow" data-i18n="contact_eyebrow">Stall Registration &amp; Queries</div>
+      <h2 data-i18n="contact_title">Get In Touch</h2>
+      <p class="sub" data-i18n="contact_sub">Have questions about stall booking, visitor passes, or partnership opportunities? Contact the Green Guru Youth Foundation team.</p>
       <ul class="contact-list">
         <li>
           <div class="ic">📞</div>
-          <div><div class="label" data-i18n="contact_call_label">Call us</div><div class="val"><a href="tel:+918147528297">+91 81475 28297</a></div></div>
+          <div>
+            <div class="label" data-i18n="contact_call_label">Stall Booking / Phone</div>
+            <div class="val">
+              <a href="tel:+917795715495">+91 77957 15495</a> &nbsp;|&nbsp; 
+              <a href="tel:+918147528297">+91 81475 28297</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="ic">✉️</div>
+          <div>
+            <div class="label" data-i18n="contact_email_label">Email Us</div>
+            <div class="val"><a href="mailto:greenguruyouthfoundation@gmail.com">greenguruyouthfoundation@gmail.com</a></div>
+          </div>
         </li>
         <li>
           <div class="ic">📷</div>
-          <div><div class="label" data-i18n="contact_ig_label">Instagram</div><div class="val"><a href="https://instagram.com/mysuru_utsava" target="_blank">@mysuru_utsava</a></div></div>
+          <div>
+            <div class="label" data-i18n="contact_ig_label">Instagram &amp; Social</div>
+            <div class="val"><a href="https://instagram.com/mysuru_utsava" target="_blank">@mysuru_utsava</a></div>
+          </div>
         </li>
         <li>
           <div class="ic">📍</div>
-          <div><div class="label" data-i18n="contact_venue_label">Venue</div><div class="val" data-i18n="contact_venue_val">Nexus Centre City Mall, Mysuru</div></div>
+          <div>
+            <div class="label" data-i18n="contact_venue_label">Venue Location</div>
+            <div class="val" data-i18n="contact_venue_val">Jagannatha Centre for Art &amp; Culture (JCAC), Mysuru</div>
+          </div>
         </li>
       </ul>
     </div>
     <div class="map-box reveal stagger-2">
       <iframe 
-        src="https://maps.google.com/maps?q=Nexus+Centre+City+Mall,+Hyder+Ali+Road,+Nazarbad,+Mysuru,+Karnataka+570010&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-        title="Nexus Centre City Mall, Mysuru Location Map"
+        src="https://maps.google.com/maps?q=Jagannatha+Centre+for+Art+%26+Culture,+Mysuru&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+        title="Jagannatha Centre for Art & Culture (JCAC), Mysuru Map"
         allowfullscreen="" 
         loading="lazy" 
         referrerpolicy="no-referrer-when-downgrade">
@@ -857,8 +1039,11 @@
   <div class="wrap">
     <div class="foot-grid">
       <a href="#" class="logo-brand">
-        <img src="logo.png" alt="Mysuru Utsava" class="logo-img" style="height:68px;">
-        <span class="logo-text" data-i18n="brand_name">Mysuru <span>Utsava</span></span>
+        <img src="logo.png" alt="Mysuru Utsava" class="logo-img" style="height:56px;">
+        <div class="logo-text-group">
+          <span class="presenter-tag" style="color:var(--cream); opacity:0.8;">Green Guru Youth Foundation</span>
+          <span class="logo-text" data-i18n="brand_name">Mysuru <span>Utsava</span></span>
+        </div>
       </a>
       <div class="foot-links">
         <a href="#about" data-i18n="nav_about">About</a>
@@ -868,7 +1053,7 @@
         <a href="#contact" data-i18n="nav_contact">Contact</a>
       </div>
     </div>
-    <div class="foot-note" data-i18n="foot_note">A conscious shopping festival, celebrating Mysuru's craft, food and culture.</div>
+    <div class="foot-note" data-i18n="foot_note">Organized by Green Guru Youth Foundation. Celebrating People, Planet &amp; Culture. 🌱</div>
   </div>
 </footer>
 
@@ -876,170 +1061,200 @@
   // Bilingual Translation Dictionary (English & Kannada)
   var i18n = {
     en: {
+      top_bar_badge: 'Stall Booking Open',
+      top_bar_text: 'Green Guru Youth Foundation Presents Mysuru Utsava 2026',
+      top_bar_cta: 'Call +91 77957 15495 / +91 81475 28297',
+      logo_presenter: 'Green Guru Youth Foundation',
       brand_name: 'Mysuru <span>Utsava</span>',
       nav_about: 'About',
       nav_categories: 'Categories',
       nav_schedule: 'Schedule',
       nav_gallery: 'Gallery',
       nav_contact: 'Contact',
-      hero_eyebrow: 'A Conscious Shopping Festival',
-      hero_head_prefix: 'A vibrant festival gathered around craft, culture & ',
+      hero_presenter: '🌱 Green Guru Youth Foundation Presents',
+      hero_head_prefix: 'A Conscious People’s Festival for ',
       hero_head_suffix: '.',
-      hero_lede: 'Mysuru Utsava is a flea market re-imagined: a conscious bazaar built around celebration, not just commerce. Curated with intention, not mass-produced excess.',
-      hero_dates: 'Three days<br>10 AM to 10 PM',
-      hero_venue: '📍 Nexus Centre City Mall, Mysuru',
+      hero_lede: 'A celebration of conscious living, sustainability, traditional craftsmanship, wellness & mindful consumption. Bringing together sustainable products & local artisans from across India.',
+      hero_dates: '2026 (Sat & Sun)<br>10:00 AM – 9:00 PM',
+      hero_venue: '📍 JCAC (Jagannatha Centre for Art & Culture), Mysuru',
       cd_label: 'Festival Starts In',
       cd_days: 'Days',
       cd_hours: 'Hours',
       cd_mins: 'Mins',
       cd_secs: 'Secs',
-      hero_cta1: 'Plan your visit',
-      hero_cta2: 'Vendor enquiries',
-      about_eyebrow: 'What is it?',
-      about_title: 'More than a market.',
-      about_p1: 'Mysuru Utsava brings together tradition, craft, food and performance under one roof, curated with intention rather than mass-produced excess.',
-      about_p2: 'Across three days, wander through handmade goods, taste local food, watch live performances, and take home a little more culture than you came with. Part bazaar, part festival, made for people who like to shop with meaning and celebrate while they\'re at it.',
-      tag_tradition: 'Tradition',
-      tag_celebration: 'Celebration',
-      tag_event: 'Event',
-      tag_entertainment: 'Fun & Entertainment',
-      cat_head_title: 'Six worlds, one venue.',
-      cat_head_sub: 'Every stall is chosen with intention: real makers, honest materials, and stories worth knowing.',
-      cat1_tag: '01 CRAFT',
-      cat1_title: 'Art & Handicrafts',
-      cat1_desc: 'Pottery and terracotta, bamboo & cane work, hand-painted decor, macrame, block printing and handloom textile art, made by the artisans themselves.',
-      cat2_tag: '02 WEAR',
-      cat2_title: 'Apparel',
-      cat2_desc: 'Sarees and ethnic wear, indie fashion labels, upcycled and refashioned clothing, occasion wear, traditional roots with a contemporary edge.',
-      cat3_tag: '03 ADORN',
-      cat3_title: 'Jewellery',
-      cat3_desc: 'Handcrafted silver and oxidised pieces, terracotta and fabric jewellery, and contemporary artisan designs for everyday and festive wear.',
-      cat4_tag: '04 MINDFUL',
-      cat4_title: 'Conscious & Sustainable',
-      cat4_desc: 'Upcycled and zero-waste goods, natural dyes, organic skincare, reusable everyday products, made to last, not to be thrown away.',
-      cat5_tag: '05 TASTE',
-      cat5_title: 'Eatables',
-      cat5_desc: 'Local flavours, homemade food, health-conscious snacks and traditional festival treats from small kitchens.',
-      cat6_tag: '06 LIVE',
-      cat6_title: 'Experiences & Performances',
-      cat6_desc: 'Live music and dance, cultural acts on stage, and hands-on workshops that let you make something with your own hands.',
-      aud_vendors_eyebrow: 'For Vendors & Entrepreneurs',
-      aud_vendors_title: 'Built to support local makers.',
-      aud_vendors_desc: 'Women entrepreneurs, men entrepreneurs, passion-led makers who turned a hobby into a business, and young or first-time entrepreneurs just getting started. Get real support, reach the right audience, and build your brand with genuine in-person exposure.',
-      aud_vendors_cta: 'Apply as a vendor',
-      aud_visitors_eyebrow: 'For Visitors',
-      aud_visitors_title: 'Shop with meaning.',
-      aud_visitors_desc: 'Meet the makers behind what you buy, discover local and sustainable brands you won\'t find in a mall, and spend a day surrounded by food, music and craft. Come to shop, come to eat, come to watch a performance, or just come to see what Mysuru\'s small businesses are creating.',
-      aud_visitors_cta: 'See the schedule',
-      sched_eyebrow: 'Save the dates',
-      sched_title: 'Three days of shopping, food and performances at Nexus Centre City Mall, Mysuru.',
+      hero_cta1: 'Book a Stall',
+      hero_cta2: 'Plan your visit',
+      policy_tagline: 'Strict Conscious & Sustainable Policy:',
+      policy_text: 'Only conscious & sustainable brands allowed. No powerloom, fast fashion, or plastic-based products.',
+      policy_cta: 'Explore Categories',
+      about_eyebrow: 'Celebrating People, Planet & Culture',
+      about_title: 'Experience. Connect. Be The Change.',
+      about_p1: 'Green Guru Youth Foundation proudly presents Mysuru Utsava 2026 — a conscious bazaar reimagined for people who value authenticity, heritage, and environmental harmony.',
+      about_p2: 'Over two vibrant days at JCAC Mysuru, discover handloom textiles, handmade jewellery, natural skincare, sustainable home decor, and conscious food from passionate artisans across India.',
+      tag_tradition: 'Traditional Craftsmanship',
+      tag_celebration: 'Conscious Living',
+      tag_event: 'Eco-friendly Products',
+      tag_entertainment: 'Arts & Culture',
+      cat_head_title: 'What We Are Looking For',
+      cat_head_sub: 'Curated for conscious brands, eco-friendly creators, and traditional Indian artisans from across India.',
+      cat1_tag: '01 TEXTILES',
+      cat1_title: 'Handloom & Textiles',
+      cat1_desc: 'Traditional weaves, hand-spun textiles, organic cottons, and authentic Indian handloom apparel. (No powerloom or fast fashion).',
+      cat2_tag: '02 JEWELLERY',
+      cat2_title: 'Handmade Jewellery',
+      cat2_desc: 'Handcrafted silver, oxidized metal, terracotta, thread, and upcycled artisan jewellery designs.',
+      cat3_tag: '03 DÉCOR',
+      cat3_title: 'Sustainable Home Décor',
+      cat3_desc: 'Bamboo & cane decor, hand-painted art, terracotta crafts, clayware, and eco-friendly home embellishments.',
+      cat4_tag: '04 WELLNESS',
+      cat4_title: 'Natural Skincare & Wellness',
+      cat4_desc: 'Organic soaps, natural remedies, botanical skincare, essential oils, and plastic-free wellness products.',
+      cat5_tag: '05 LIFESTYLE',
+      cat5_title: 'Eco Lifestyle Products',
+      cat5_desc: 'Zero-waste daily utilities, jute & cloth bags, compostable goods, and earth-friendly lifestyle alternatives.',
+      cat6_tag: '06 UPCYCLED',
+      cat6_title: 'Upcycled & Recycled',
+      cat6_desc: 'Creative products handcrafted from repurposed fabric, reclaimed wood, and recycled waste materials.',
+      cat7_tag: '07 ARTISANS',
+      cat7_title: 'Traditional Artisans',
+      cat7_desc: 'Heritage folk art, traditional wood carvings, pottery, and indigenous Indian craft forms.',
+      cat8_tag: '08 FOOD',
+      cat8_title: 'Conscious Food',
+      cat8_desc: 'Organic snacks, cold-pressed treats, traditional culinary delights, and natural farm produce.',
+      aud_vendors_eyebrow: 'For Conscious Brands & Artisans',
+      aud_vendors_title: 'Register Your Stall Today',
+      aud_vendors_desc: 'If your brand aligns with the spirit of Mysuru Utsava, we would love to have you with us! Reach thousands of conscious consumers and showcase your sustainable creations.',
+      aud_vendors_cta: 'DM / Call for Stall Details',
+      aud_visitors_eyebrow: 'For Visitors & Enthusiasts',
+      aud_visitors_title: 'Shop, Learn & Celebrate',
+      aud_visitors_desc: 'Immerse yourself in live music & cultural performances, interactive talks & workshops, sustainable market shopping, and wholesome conscious food under the open Mysuru sky.',
+      aud_visitors_cta: 'View Festival Dates',
+      sched_eyebrow: 'Mark Your Calendar',
+      sched_title: 'Two Days of Culture, Consciousness & Community at JCAC, Mysuru.',
       ticket1_label: 'Day One',
+      ticket1_date: 'October 31, 2026 (Saturday)',
       ticket2_label: 'Day Two',
-      ticket3_label: 'Day Three',
-      ticket_time: '10:00 AM to 10:00 PM',
-      sched_venue_line: '📍 Nexus Centre City Mall, Mysuru • See you there.',
-      gal_eyebrow: 'Moments',
-      gal_title: 'From past editions.',
-      gal1: 'Handicraft stalls',
-      gal2: 'Live performance',
-      gal3: 'Festival lights',
-      gal4: 'Food corner',
-      gal5: 'Apparel walk',
-      gal6: 'Workshop corner',
-      contact_eyebrow: 'Get in touch',
-      contact_title: 'Say hello.',
-      contact_sub: 'Questions about the festival, vendor applications, or just want directions? Reach out any time.',
-      contact_call_label: 'Call us',
-      contact_ig_label: 'Instagram',
-      contact_venue_label: 'Venue',
-      contact_venue_val: 'Nexus Centre City Mall, Mysuru',
-      foot_note: 'A conscious shopping festival, celebrating Mysuru\'s craft, food and culture.'
+      ticket2_date: 'November 01, 2026 (Sunday)',
+      ticket_time: '10:00 AM – 9:00 PM',
+      sched_venue_line: '📍 Jagannatha Centre for Art & Culture (JCAC), Mysuru • We look forward to welcoming you!',
+      gal_eyebrow: 'Festival Vibes',
+      gal_title: 'Culture. Consciousness. Change.',
+      gal1: 'Handloom & Artisan Crafts',
+      gal2: 'Live Cultural Music',
+      gal3: 'Conscious Gathering',
+      gal4: 'Organic Food & Snacks',
+      gal5: 'Sustainable Fashion',
+      gal6: 'Eco Talks & Workshops',
+      contact_eyebrow: 'Stall Registration & Queries',
+      contact_title: 'Get In Touch',
+      contact_sub: 'Have questions about stall booking, visitor passes, or partnership opportunities? Contact the Green Guru Youth Foundation team.',
+      contact_call_label: 'Stall Booking / Phone',
+      contact_email_label: 'Email Us',
+      contact_ig_label: 'Instagram & Social',
+      contact_venue_label: 'Venue Location',
+      contact_venue_val: 'Jagannatha Centre for Art & Culture (JCAC), Mysuru',
+      foot_note: 'Organized by Green Guru Youth Foundation. Celebrating People, Planet & Culture. 🌱'
     },
     kn: {
+      top_bar_badge: 'ಮಳಿಗೆ ನೋಂದಣಿ ಪ್ರಾರಂಭವಾಗಿದೆ',
+      top_bar_text: 'ಗ್ರೀನ್ ಗುರು ಯೂತ್ ಫೌಂಡೇಶನ್ ಅರ್ಪಿಸುವ ಮೈಸೂರು ಉತ್ಸವ 2026',
+      top_bar_cta: 'ಸಂಪರ್ಕಿಸಿ: +91 77957 15495 / +91 81475 28297',
+      logo_presenter: 'ಗ್ರೀನ್ ಗುರು ಯೂತ್ ಫೌಂಡೇಶನ್',
       brand_name: 'ಮೈಸೂರು <span>ಉತ್ಸವ</span>',
       nav_about: 'ಪರಿಚಯ',
       nav_categories: 'ವಿಭಾಗಗಳು',
       nav_schedule: 'ವೇಳಾಪಟ್ಟಿ',
       nav_gallery: 'ಕ್ಷಣಚಿತ್ರಗಳು',
       nav_contact: 'ಸಂಪರ್ಕಿಸಿ',
-      hero_eyebrow: 'ಒಂದು ಜಾಗೃತ ಶಾಪಿಂಗ್ ಹಬ್ಬ',
-      hero_head_prefix: 'ಕರಕುಶಲತೆ, ಕಲೆ ಮತ್ತು ',
-      hero_head_suffix: ' ಒಂದೇ ಸಂಭ್ರಮದಲ್ಲಿ.',
-      hero_lede: 'ಮೈಸೂರು ಉತ್ಸವವು ಮಾರುಕಟ್ಟೆಯ ಹೊಸ ಪರಿಕಲ್ಪನೆ: ಕೇವಲ ವ್ಯಾಪಾರವಲ್ಲದೆ ಸಂಸ್ಕೃತಿ ಮತ್ತು ಸೃಜನಶೀಲತೆಯ ಸಂಭ್ರಮ. ಅರ್ಥಪೂರ್ಣ ಶಾಪಿಂಗ್ ಅನುಭವಕ್ಕಾಗಿ ಸಿದ್ಧಪಡಿಸಲಾದ ಅಪೂರ್ವ ವೇದಿಕೆ.',
-      hero_dates: 'ಮೂರು ದಿನಗಳು<br>ಬೆಳಿಗ್ಗೆ 10 ರಿಂದ ರಾತ್ರಿ 10',
-      hero_venue: '📍 ನೆಕ್ಸಸ್ ಸೆಂಟರ್ ಸಿಟಿ ಮಾಲ್, ಮೈಸೂರು',
+      hero_presenter: '🌱 ಗ್ರೀನ್ ಗುರು ಯೂತ್ ಫೌಂಡೇಶನ್ ಅರ್ಪಿಸುವ',
+      hero_head_prefix: 'ಸುಸ್ಥಿರ ಜೀವನ ಮತ್ತು ಪರಿಸರ ಸ್ನೇಹಿ ',
+      hero_head_suffix: ' ಜನೋತ್ಸವ.',
+      hero_lede: 'ಸಂಸ್ಕೃತಿ, ಪರಿಸರ ಸ್ನೇಹಿ ಉತ್ಪನ್ನಗಳು, ಸಾಂಪ್ರದಾಯಿಕ ಕರಕುಶಲತೆ ಮತ್ತು ಜಾಗೃತ ಜೀವನಶೈಲಿಯ ಆಚರಣೆ. ಭಾರತದಾದ್ಯಂತ ಇರುವ ಕುಶಲಕರ್ಮಿಗಳ ಸಮಾಗಮ.',
+      hero_dates: '2026 (ಶನಿವಾರ & ಭಾನುವಾರ)<br>ಬೆಳಿಗ್ಗೆ 10:00 - ರಾತ್ರಿ 9:00',
+      hero_venue: '📍 ಜೆ ಸಿ ಎ ಸಿ (ಜಗನ್ನಾಥ ಕಲಾ ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ ಕೇಂದ್ರ), ಮೈಸೂರು',
       cd_label: 'ಉತ್ಸವ ಪ್ರಾರಂಭವಾಗಲು',
       cd_days: 'ದಿನಗಳು',
       cd_hours: 'ಗಂಟೆಗಳು',
       cd_mins: 'ನಿಮಿಷ',
       cd_secs: 'ಸೆಕೆಂಡ್',
-      hero_cta1: 'ಭೇಟಿಯ ಯೋಜನೆ ಮಾಡಿ',
-      hero_cta2: 'ಮಾರಾಟಗಾರರ ವಿಚಾರಣೆ',
-      about_eyebrow: 'ಇದು ಏನು?',
-      about_title: 'ಕೇವಲ ಮಾರುಕಟ್ಟೆಯಲ್ಲ, ಒಂದು ಹಬ್ಬ.',
-      about_p1: 'ಮೈಸೂರು ಉತ್ಸವವು ಸಂಪ್ರದಾಯ, ಕರಕುಶಲತೆ, ರುಚಿಕರ ಆಹಾರ ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ ಕಾರ್ಯಕ್ರಮಗಳನ್ನು ಒಂದೇ ಸೂರಿನಡಿ ತರುತ್ತದೆ.',
-      about_p2: 'ಮೂರು ದಿನಗಳ ಕಾಲ ಕೈಯಿಂದ ತಯಾರಿಸಿದ ವಸ್ತುಗಳನ್ನು ವೀಕ್ಷಿಸಿ, ಸ್ಥಳೀಯ ಆಹಾರದ ರುಚಿ ಸವಿಯಿರಿ, ನೇರ ಪ್ರದರ್ಶನಗಳನ್ನು ಆನಂದಿಸಿ, ಮತ್ತು ಮೈಸೂರಿನ ಶ್ರೀಮಂತ ಸಂಸ್ಕೃತಿಯನ್ನು ಅನುಭವಿಸಿ.',
-      tag_tradition: 'ಸಂಪ್ರದಾಯ',
-      tag_celebration: 'ಸಂಭ್ರಮ',
-      tag_event: 'ಕಾರ್ಯಕ್ರಮ',
-      tag_entertainment: 'ಮನರಂಜನೆ',
-      cat_head_title: 'ಆರು ಪ್ರಪಂಚಗಳು, ಒಂದೇ ವೇದಿಕೆ.',
-      cat_head_sub: 'ಪ್ರತಿಯೊಂದು ಮಳಿಗೆಯೂ ವಿಶೇಷ: ನೈಜ ಕುಶಲಕರ್ಮಿಗಳು, ಪ್ರಾಮಾಣಿಕ ಸಾಮಗ್ರಿಗಳು ಮತ್ತು ಸ್ಫೂರ್ತಿದಾಯಕ ಕಥೆಗಳು.',
-      cat1_tag: '01 ಕಲೆ',
-      cat1_title: 'ಕರಕುಶಲ ವಸ್ತುಗಳು',
-      cat1_desc: 'ಮಣ್ಣಿನ ಮಡಕೆಗಳು, ಬಿದಿರಿನ ವಸ್ತುಗಳು, ಕೈಯಿಂದ ರಚಿಸಿದ ಅಲಂಕಾರಿಕ ಕಲಾಕೃತಿಗಳು, ಬ್ಲಾಕ್ ಪ್ರಿಂಟಿಂಗ್ ಮತ್ತು ಕೈಮಗ್ಗ ಜವಳಿ ಕಲೆ.',
-      cat2_tag: '02 ಉಡುಪು',
-      cat2_title: 'ಉಡುಪುಗಳು & ಸೀರೆಗಳು',
-      cat2_desc: 'ಸಾಂಪ್ರದಾಯಿಕ ಸೀರೆಗಳು, ಎಥ್ನಿಕ್ ಉಡುಪುಗಳು, ಸಮಕಾಲೀನ ಫ್ಯಾಷನ್ ಮತ್ತು ಪುನರ್ಬಳಕೆಯ ಪರಿಸರ ಸ್ನೇಹಿ ವಸ್ತ್ರಗಳು.',
-      cat3_tag: '03 ಆಭರಣ',
-      cat3_title: 'ಆಭರಣಗಳು',
-      cat3_desc: 'ಕೈಯಿಂದ ತಯಾರಿಸಿದ ಬೆಳ್ಳಿ ಆಭರಣಗಳು, ಟೆರ್ರಾಕೋಟಾ ಮತ್ತು ನೂಲಿನ ಆಭರಣಗಳು ಹಾಗೂ ನಿತ್ಯದ ಮತ್ತು ಹಬ್ಬದ ವಿನ್ಯಾಸಗಳು.',
-      cat4_tag: '04 ಜಾಗೃತಿ',
-      cat4_title: 'ಸುಸ್ಥಿರ ಮತ್ತು ಪರಿಸರ ಸ್ನೇಹಿ',
-      cat4_desc: 'ಶೂನ್ಯ ತ್ಯಾಜ್ಯದ ವಸ್ತುಗಳು, ನೈಸರ್ಗಿಕ ಬಣ್ಣಗಳು, ಸಾವಯವ ತ್ವಚಾ ಉತ್ಪನ್ನಗಳು ಮತ್ತು ದಿನಬಳಕೆಯ ಪರಿಸರ ಸ್ನೇಹಿ ಸಾಮಗ್ರಿಗಳು.',
-      cat5_tag: '05 ರುಚಿ',
-      cat5_title: 'ಸ್ಥಳೀಯ ತಿನಿಸುಗಳು',
-      cat5_desc: 'ಮೈಸೂರಿನ ವಿಶಿಷ್ಟ ರುಚಿಗಳು, ಮನೆಯೂಟ, ಆರೋಗ್ಯಕರ ತಿಂಡಿಗಳು ಮತ್ತು ಸಣ್ಣ ಅಡುಗೆಮನೆಗಳಿಂದ ತಯಾರಿಸಿದ ಹಬ್ಬದ ತಿನಿಸುಗಳು.',
-      cat6_tag: '06 ಲೈವ್',
-      cat6_title: 'ಅನುಭವಗಳು ಮತ್ತು ಪ್ರದರ್ಶನಗಳು',
-      cat6_desc: 'ನೇರ ಸಂಗೀತ, ಶಾಸ್ತ್ರೀಯ ಮತ್ತು ಜಾನಪದ ನೃತ್ಯಗಳು ಹಾಗೂ ನಿಮ್ಮ ಕೈಯಾರೆ ಕಲಾಕೃತಿಗಳನ್ನು ರಚಿಸುವ ಕಾರ್ಯಾಗಾರಗಳು.',
-      aud_vendors_eyebrow: 'ಮಾರಾಟಗಾರರು ಮತ್ತು ಉದ್ಯಮಿಗಳಿಗಾಗಿ',
-      aud_vendors_title: 'ಸ್ಥಳೀಯ ತಯಾರಕರಿಗೆ ಬಲವಾದ ಬೆಂಬಲ.',
-      aud_vendors_desc: 'ಮಹಿಳಾ ಉದ್ಯಮಿಗಳು, ಯುವ ತಯಾರಕರು ಮತ್ತು ಹೊಸದಾಗಿ ಆರಂಭಿಸುತ್ತಿರುವ ಸಣ್ಣ ವ್ಯಾಪಾರಿಗಳಿಗೆ ನೈಜ ಗ್ರಾಹಕರ ಸಂಪರ್ಕ ಮತ್ತು ಬ್ರ್ಯಾಂಡ್ ನಿರ್ಮಾಣಕ್ಕೆ ನೇರ ವೇದಿಕೆ.',
-      aud_vendors_cta: 'ಮಾರಾಟಗಾರರಾಗಿ ನೋಂದಾಯಿಸಿ',
+      hero_cta1: 'ಮಳಿಗೆ ಕಾಯ್ದಿರಿಸಿ',
+      hero_cta2: 'ಭೇಟಿಯ ಯೋಜನೆ ಮಾಡಿ',
+      policy_tagline: 'ಕಟ್ಟುನಿಟ್ಟಾದ ಪರಿಸರ ಸ್ನೇಹಿ ನೀತಿ:',
+      policy_text: 'ಕೇವಲ ಜಾಗೃತ ಮತ್ತು ಪರಿಸರ ಸ್ನೇಹಿ ಬ್ರ್ಯಾಂಡ್‌ಗಳಿಗೆ ಮಾತ್ರ ಅವಕಾಶ. ಪವರ್‌ಲೂಮ್, ಫಾಸ್ಟ್ ಫ್ಯಾಷನ್ ಮತ್ತು ಪ್ಲಾಸ್ಟಿಕ್ ಉತ್ಪನ್ನಗಳಿಗೆ ಸಂಪೂರ್ಣ ನಿಷೇಧ.',
+      policy_cta: 'ವಿಭಾಗಗಳನ್ನು ನೋಡಿ',
+      about_eyebrow: 'ಜನರು, ಭೂಮಿ ಮತ್ತು ಸಂಸ್ಕೃತಿಯ ಆಚರಣೆ',
+      about_title: 'ಅನುಭವಿಸಿ. ಸಂಪರ್ಕಿಸಿ. ಬದಲಾವಣೆಯಾಗಿ.',
+      about_p1: 'ಗ್ರೀನ್ ಗುರು ಯೂತ್ ಫೌಂಡೇಶನ್ ಹೆಮ್ಮೆಯಿಂದ ಅರ್ಪಿಸುವ ಮೈಸೂರು ಉತ್ಸವ 2026 — ಸಂಸ್ಕೃತಿ ಮತ್ತು ಸುಸ್ಥಿರ ಜೀವನದ ಸುಂದರ ಸಂಗಮ.',
+      about_p2: 'ಜೆಸಿಎಸಿ ಮೈಸೂರಿನಲ್ಲಿ ಎರಡು ದಿನಗಳ ಕಾಲ ಕೈಮಗ್ಗ ವಸ್ತ್ರಗಳು, ಹ್ಯಾಂಡ್‌ಮೇಡ್ ಆಭರಣಗಳು, ನೈಸರ್ಗಿಕ ತ್ವಚಾ ಉತ್ಪನ್ನಗಳು ಮತ್ತು ಜಾಗೃತ ತಿನಿಸುಗಳನ್ನು ಅನ್ವೇಷಿಸಿ.',
+      tag_tradition: 'ಸಾಂಪ್ರದಾಯಿಕ ಕರಕುಶಲತೆ',
+      tag_celebration: 'ಜಾಗೃತ ಜೀವನಶೈಲಿ',
+      tag_event: 'ಪರಿಸರ ಸ್ನೇಹಿ ಉತ್ಪನ್ನಗಳು',
+      tag_entertainment: 'ಕಲೆ ಮತ್ತು ಸಂಸ್ಕೃತಿ',
+      cat_head_title: 'ನಾವು ಪ್ರೋತ್ಸಾಹಿಸುವ ವಿಭಾಗಗಳು',
+      cat_head_sub: 'ಪರಿಸರ ಸ್ನೇಹಿ ಬ್ರ್ಯಾಂಡ್‌ಗಳು ಮತ್ತು ದೇಶದ ವಿವಿಧ ಭಾಗಗಳ ಸಾಂಪ್ರದಾಯಿಕ ಭಾರತೀಯ ಕುಶಲಕರ್ಮಿಗಳಿಗಾಗಿ.',
+      cat1_tag: '01 ಕೈಮಗ್ಗ',
+      cat1_title: 'ಕೈಮಗ್ಗ ಮತ್ತು ಸಾಂಪ್ರದಾಯಿಕ ವಸ್ತ್ರಗಳು',
+      cat1_desc: 'ಸಾಂಪ್ರದಾಯಿಕ ನೇಕಾರಿಕೆ, ನೈಸರ್ಗಿಕ ನೂಲುಗಳು ಮತ್ತು ಕೈಮಗ್ಗ ಉಡುಪುಗಳು (ಪವರ್‌ಲೂಮ್ ನಿಷೇಧಿಸಲಾಗಿದೆ).',
+      cat2_tag: '02 ಆಭರಣ',
+      cat2_title: 'ಹ್ಯಾಂಡ್‌ಮೇಡ್ ಆಭರಣಗಳು',
+      cat2_desc: 'ಕೈಯಿಂದ ತಯಾರಿಸಿದ ಬೆಳ್ಳಿ, ಆಕ್ಸಿಡೈಸ್ಡ್, ಟೆರ್ರಾಕೋಟಾ ಮತ್ತು ಪರಿಸರ ಸ್ನೇಹಿ ಆಭರಣಗಳು.',
+      cat3_tag: '03 ಅಲಂಕಾರ',
+      cat3_title: 'ಸುಸ್ಥಿರ ಗೃಹ ಅಲಂಕಾರ',
+      cat3_desc: 'ಬಿದಿರಿನ ಕಲಾಕೃತಿಗಳು, ಕೈಯಿಂದ ಬಿಡಿಸಿದ ಚಿತ್ರಗಳು, ಮಣ್ಣಿನ ಉತ್ಪನ್ನಗಳು ಮತ್ತು ನೈಸರ್ಗಿಕ ಗೃಹ ಸಾಮಗ್ರಿಗಳು.',
+      cat4_tag: '04 ಆರೋಗ್ಯ',
+      cat4_title: 'ನೈಸರ್ಗಿಕ ತ್ವಚೆ ಮತ್ತು ಆರೈಕೆ',
+      cat4_desc: 'ಸಾಕಷ್ಟು ನೈಸರ್ಗಿಕ ಸೋಪುಗಳು, ಗಿಡಮೂಲಿಕೆ ಉತ್ಪನ್ನಗಳು ಮತ್ತು ಪ್ಲಾಸ್ಟಿಕ್ ರಹಿತ ಸೌಂದರ್ಯ ಸಾಮಗ್ರಿಗಳು.',
+      cat5_tag: '05 ಜೀವನಶೈಲಿ',
+      cat5_title: 'ಪರಿಸರ ಸ್ನೇಹಿ ಜೀವನಶೈಲಿ',
+      cat5_desc: 'ಶೂನ್ಯ ತ್ಯಾಜ್ಯದ ದಿನಬಳಕೆ ವಸ್ತುಗಳು, ಸೆಣಬಿನ ಚೀಲಗಳು ಮತ್ತು ಮಣ್ಣಿನಲ್ಲಿ ಕರಗುವ ಸಾಮಗ್ರಿಗಳು.',
+      cat6_tag: '06 ಪುನರ್ಬಳಕೆ',
+      cat6_title: 'ಅಪ್‌ಸೈಕಲ್ಡ್ ಉತ್ಪನ್ನಗಳು',
+      cat6_desc: 'ಮರುಬಳಕೆ ಮಾಡಿದ ಬಟ್ಟೆ ಮತ್ತು ಸಾಮಗ್ರಿಗಳಿಂದ ತಯಾರಿಸಿದ ಅಪೂರ್ವ ಕಲಾಕೃತಿಗಳು.',
+      cat7_tag: '07 ಕುಶಲಕರ್ಮಿಗಳು',
+      cat7_title: 'ಸಾಂಪ್ರದಾಯಿಕ ಕುಶಲಕರ್ಮಿಗಳು',
+      cat7_desc: 'ಪಾರಂಪರಿಕ ಜಾನಪದ ಕಲೆ, ಮರದ ಕೆತ್ತನೆಗಳು ಮತ್ತು ಪ್ರಾಚೀನ ಭಾರತೀಯ ಕಲಾ ಪ್ರಕಾರಗಳು.',
+      cat8_tag: '08 ಆಹಾರ',
+      cat8_title: 'ಆರ್ಗ್ಯಾನಿಕ್ ಆಹಾರ',
+      cat8_desc: 'ಆರ್ಗ್ಯಾನಿಕ್ ತಿನಿಸುಗಳು, ಸಾಂಪ್ರದಾಯಿಕ ಆಹಾರ ಮತ್ತು ನೈಸರ್ಗಿಕ ಕೃಷಿ ಉತ್ಪನ್ನಗಳು.',
+      aud_vendors_eyebrow: 'ಬ್ರ್ಯಾಂಡ್‌ಗಳು ಮತ್ತು ಕುಶಲಕರ್ಮಿಗಳಿಗಾಗಿ',
+      aud_vendors_title: 'ಇಂದೇ ಮಳಿಗೆ ನೋಂದಾಯಿಸಿ',
+      aud_vendors_desc: 'ನಿಮ್ಮ ಬ್ರ್ಯಾಂಡ್ ಮೈಸೂರು ಉತ್ಸವದ ಪರಿಸರ ಸ್ನೇಹಿ ಪರಿಕಲ್ಪನೆಗೆ ಹೊಂದಿಕೆಯಾದರೆ, ನಮ್ಮೊಂದಿಗೆ ಸೇರಿಕೊಳ್ಳಿ! ಸಾವಿರಾರು ಗ್ರಾಹಕರನ್ನು ತಲುಪಿ.',
+      aud_vendors_cta: 'ಮಳಿಗೆ ಮಾಹಿತಿಗಾಗಿ ಕರೆ ಮಾಡಿ',
       aud_visitors_eyebrow: 'ಸಂದರ್ಶಕರಿಗಾಗಿ',
-      aud_visitors_title: 'ಅರ್ಥಪೂರ್ಣವಾಗಿ ಶಾಪಿಂಗ್ ಮಾಡಿ.',
-      aud_visitors_desc: 'ವಸ್ತುಗಳ ಹಿಂದಿರುವ ಕುಶಲಕರ್ಮಿಗಳನ್ನು ಭೇಟಿ ಮಾಡಿ, ಸ್ಥಳೀಯ ಮತ್ತು ಸುಸ್ಥಿರ ಬ್ರ್ಯಾಂಡ್‌ಗಳನ್ನು ಅನ್ವೇಷಿಸಿ, ಕುಟುಂಬ ಮತ್ತು ಸ್ನೇಹಿತರೊಂದಿಗೆ ಆಹಾರ, ಸಂಗೀತ ಮತ್ತು ಕಲೆಯ ದಿನವನ್ನು ಕಳೆಯಿರಿ.',
-      aud_visitors_cta: 'ವೇಳಾಪಟ್ಟಿ ವೀಕ್ಷಿಸಿ',
-      sched_eyebrow: 'ದಿನಾಂಕಗಳನ್ನು ಗುರುತಿಸಿಕೊಳ್ಳಿ',
-      sched_title: 'ಮೂರು ದಿನಗಳ ಶಾಪಿಂಗ್, ಆಹಾರ ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ ಸಂಭ್ರಮ - ನೆಕ್ಸಸ್ ಸೆಂಟರ್ ಸಿಟಿ ಮಾಲ್, ಮೈಸೂರು.',
+      aud_visitors_title: 'ಶಾಪಿಂಗ್ ಮಾಡಿ, ಆನಂದಿಸಿ',
+      aud_visitors_desc: 'ಲೈವ್ ಸಂಗೀತ, ಸಾಂಸ್ಕೃತಿಕ ಕಾರ್ಯಕ್ರಮಗಳು, ಕಾರ್ಯಾಗಾರಗಳು, ಪರಿಸರ ಸ್ನೇಹಿ ಮಾರುಕಟ್ಟೆ ಮತ್ತು ರುಚಿಕರ ಆಹಾರದ ಸೌಂದರ್ಯವನ್ನು ಅನುಭವಿಸಿ.',
+      aud_visitors_cta: 'ದಿನಾಂಕಗಳನ್ನು ವೀಕ್ಷಿಸಿ',
+      sched_eyebrow: 'ದಿನಾಂಕಗಳನ್ನು ನೆನಪಿಡಿ',
+      sched_title: 'ಎರಡು ದಿನಗಳ ಸಂಸ್ಕೃತಿ, ಪರಿಸರ ಜಾಗೃತಿ ಮತ್ತು ಕಲಾ ಸಂಭ್ರಮ - ಜೆಸಿಎಸಿ, ಮೈಸೂರು.',
       ticket1_label: 'ಮೊದಲ ದಿನ',
+      ticket1_date: 'ಅಕ್ಟೋಬರ್ 31, 2026 (ಶನಿವಾರ)',
       ticket2_label: 'ಎರಡನೇ ದಿನ',
-      ticket3_label: 'ಮೂರನೇ ದಿನ',
-      ticket_time: 'ಬೆಳಿಗ್ಗೆ 10:00 ರಿಂದ ರಾತ್ರಿ 10:00',
-      sched_venue_line: '📍 ನೆಕ್ಸಸ್ ಸೆಂಟರ್ ಸಿಟಿ ಮಾಲ್, ಮೈಸೂರು • ಅಲ್ಲಿ ಭೇಟಿಯಾಗೋಣ.',
-      gal_eyebrow: 'ಕ್ಷಣಚಿತ್ರಗಳು',
-      gal_title: 'ಹಿಂದಿನ ಆವೃತ್ತಿಗಳಿಂದ.',
-      gal1: 'ಕರಕುಶಲ ಮಳಿಗೆಗಳು',
-      gal2: 'ಲೈವ್ ಪ್ರದರ್ಶನ',
-      gal3: 'ದೀಪಾಲಂಕಾರ',
-      gal4: 'ಆಹಾರ ಮಳಿಗೆಗಳು',
-      gal5: 'ಉಡುಪುಗಳ ಶೋ',
-      gal6: 'ಕಾರ್ಯಾಗಾರಗಳು',
-      contact_eyebrow: 'ಸಂಪರ್ಕಿಸಿ',
-      contact_title: 'ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ.',
-      contact_sub: 'ಉತ್ಸವದ ಕುರಿತು ಪ್ರಶ್ನೆಗಳು, ಮಳಿಗೆ ನೋಂದಣಿ ಅಥವಾ ಮಾರ್ಗದರ್ಶನಕ್ಕಾಗಿ ಯಾವುದೇ ಸಮಯದಲ್ಲಿ ಸಂಪರ್ಕಿಸಿ.',
-      contact_call_label: 'ಕರೆ ಮಾಡಿ',
-      contact_ig_label: 'ಇನ್‌ಸ್ಟಾಗ್ರಾಮ್',
-      contact_venue_label: 'ಸ್ಥಳ',
-      contact_venue_val: 'ನೆಕ್ಸಸ್ ಸೆಂಟರ್ ಸಿಟಿ ಮಾಲ್, ಮೈಸೂರು',
-      foot_note: 'ಮೈಸೂರಿನ ಕರಕುಶಲತೆ, ಆಹಾರ ಮತ್ತು ಸಂಸ್ಕೃತಿಯನ್ನು ಆಚರಿಸುವ ಒಂದು ಜಾಗೃತ ಶಾಪಿಂಗ್ ಹಬ್ಬ.'
+      ticket2_date: 'ನವೆಂಬರ್ 01, 2026 (ಭಾನುವಾರ)',
+      ticket_time: 'ಬೆಳಿಗ್ಗೆ 10:00 - ರಾತ್ರಿ 9:00',
+      sched_venue_line: '📍 ಜೆ ಸಿ ಎ ಸಿ (ಜಗನ್ನಾಥ ಕಲಾ ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ ಕೇಂದ್ರ), ಮೈಸೂರು • ಬನ್ನಿ, ಸಂಭ್ರಮಿಸಿ!',
+      gal_eyebrow: 'ಉತ್ಸವದ ವೈಭವ',
+      gal_title: 'ಸಂಸ್ಕೃತಿ. ಜಾಗೃತಿ. ಬದಲಾವಣೆ.',
+      gal1: 'ಕೈಮಗ್ಗ ಮತ್ತು ಕರಕುಶಲ ವಸ್ತುಗಳು',
+      gal2: 'ಲೈವ್ ಸಾಂಸ್ಕೃತಿಕ ಸಂಗೀತ',
+      gal3: 'ಜಾಗೃತ ನಾಗರಿಕರ ಸಮಾಗಮ',
+      gal4: 'ಆರ್ಗ್ಯಾನಿಕ್ ಆಹಾರ ಮಳಿಗೆಗಳು',
+      gal5: 'ಸುಸ್ಥಿರ ಫ್ಯಾಷನ್',
+      gal6: 'ಪರಿಸರ ಕಾರ್ಯಾಗಾರಗಳು',
+      contact_eyebrow: 'ಮಳಿಗೆ ನೋಂದಣಿ & ವಿಚಾರಣೆ',
+      contact_title: 'ಸಂಪರ್ಕಿಸಿ',
+      contact_sub: 'ಮಳಿಗೆ ನೋಂದಣಿ, ಸಂದರ್ಶಕರ ವಿವರ ಅಥವಾ ಇತರ ಮಾಹಿತಿಗಾಗಿ ಗ್ರೀನ್ ಗುರು ಯೂತ್ ಫೌಂಡೇಶನ್ ತಂಡವನ್ನು ಸಂಪರ್ಕಿಸಿ.',
+      contact_call_label: 'ಮಳಿಗೆ ನೋಂದಣಿ / ಕರೆ',
+      contact_email_label: 'ಇಮೇಲ್ ಮಾಡಿ',
+      contact_ig_label: 'ಇನ್‌ಸ್ಟಾಗ್ರಾಮ್ & ಸೋಷಿಯಲ್',
+      contact_venue_label: 'ಉತ್ಸವದ ಸ್ಥಳ',
+      contact_venue_val: 'ಜೆಸಿಎಸಿ (ಜಗನ್ನಾಥ ಕಲಾ ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ ಕೇಂದ್ರ), ಮೈಸೂರು',
+      foot_note: 'ಆಯೋಜನೆ: ಗ್ರೀನ್ ಗುರು ಯೂತ್ ಫೌಂಡೇಶನ್. ಸಂಸ್ಕೃತಿ, ಜಾಗೃತಿ ಮತ್ತು ಸುಸ್ಥಿರತೆಯ ಸಂಭ್ರಮ. 🌱'
     }
   };
 
   var rotatorWords = {
-    en: ['local food', 'live music', 'handloom apparel', 'artisan jewellery', 'handmade decor', 'creative workshops', 'festive treats', 'stage performances'],
-    kn: ['ಸ್ಥಳೀಯ ತಿನಿಸುಗಳು', 'ಲೈವ್ ಸಂಗೀತ', 'ಕೈಮಗ್ಗ ಉಡುಪುಗಳು', 'ಆಭರಣಗಳು', 'ಕರಕುಶಲ ಕಲೆ', 'ಕಾರ್ಯಾಗಾರಗಳು', 'ಹಬ್ಬದ ಸಿಹಿಗಳು', 'ರಂಗ ಪ್ರದರ್ಶನಗಳು']
+    en: ['sustainable craft', 'handloom textiles', 'natural skincare', 'handmade jewellery', 'eco lifestyle', 'upcycled art', 'conscious food', 'cultural performances'],
+    kn: ['ಸುಸ್ಥಿರ ಕರಕುಶಲತೆ', 'ಕೈಮಗ್ಗ ವಸ್ತ್ರಗಳು', 'ನೈಸರ್ಗಿಕ ತ್ವಚಾ ಉತ್ಪನ್ನಗಳು', 'ಆಭರಣಗಳು', 'ಪರಿಸರ ಸ್ನೇಹಿ ಜೀವನ', 'ಪುನರ್ಬಳಕೆ ಕಲೆ', 'ಆರ್ಗ್ಯಾನಿಕ್ ಆಹಾರ', 'ಸಾಂಸ್ಕೃತಿಕ ಕಾರ್ಯಕ್ರಮ']
   };
 
   var currentLang = 'en';
@@ -1223,7 +1438,7 @@
     revealElements.forEach(function(el){ el.classList.add('visible'); });
   }
 
-  // Live Festival Countdown Timer
+  // Live Festival Countdown Timer (Target: Oct 31, 2026 at 10:00 AM IST)
   function initCountdown(){
     var cdDays = document.getElementById('cdDays');
     var cdHours = document.getElementById('cdHours');
@@ -1231,11 +1446,7 @@
     var cdSecs = document.getElementById('cdSecs');
     if(!cdDays || !cdHours || !cdMins || !cdSecs) return;
 
-    var now = new Date();
-    var targetDate = new Date(now.getFullYear(), now.getMonth(), 11, 10, 0, 0);
-    if(now.getTime() >= targetDate.getTime()){
-      targetDate = new Date(now.getFullYear(), now.getMonth() + 1, 11, 10, 0, 0);
-    }
+    var targetDate = new Date(2026, 9, 31, 10, 0, 0); // October 31, 2026 at 10:00:00
 
     function updateTimer(){
       var current = new Date().getTime();
