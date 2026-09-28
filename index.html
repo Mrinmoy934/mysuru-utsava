@@ -675,14 +675,83 @@
   footer{
     background:#E6D7C3;
     color:#54465F;
-    padding:48px 0;
+    padding:48px 0 36px;
     border-top:1px solid rgba(36,25,51,0.12);
   }
-  .foot-grid{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; }
-  .foot-links{ display:flex; gap:24px; font-size:13.5px; }
-  .foot-links a{ color:var(--charcoal); font-weight:600; }
-  .foot-links a:hover{ color:var(--terracotta); }
-  .foot-note{ font-size:12.5px; color:#7D6B8D; margin-top:26px; text-align:center; }
+  .foot-grid{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:24px;
+  }
+  .foot-links{
+    display:flex;
+    align-items:center;
+    gap:22px;
+    font-size:14px;
+    flex-wrap:wrap;
+  }
+  .foot-links a{
+    color:var(--charcoal);
+    font-weight:600;
+    padding:4px 2px;
+    transition:color .2s ease;
+  }
+  .foot-links a:hover{
+    color:var(--terracotta);
+  }
+  .foot-note{
+    font-size:13px;
+    color:#6C5B7B;
+    margin-top:28px;
+    padding-top:22px;
+    border-top:1px solid rgba(36,25,51,0.08);
+    text-align:center;
+    line-height:1.6;
+  }
+
+  @media (max-width:768px){
+    footer{ padding:40px 0 28px; }
+    .foot-grid{
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
+      gap:20px;
+    }
+    .foot-grid .logo-brand{
+      justify-content:center;
+      text-align:left;
+    }
+    .foot-links{
+      justify-content:center;
+      gap:12px 20px;
+    }
+    .foot-note{
+      margin-top:22px;
+      padding-top:18px;
+      font-size:12.5px;
+    }
+  }
+
+  @media (max-width:480px){
+    footer{ padding:32px 0 24px; }
+    .foot-links{
+      gap:8px 16px;
+      font-size:13.5px;
+    }
+    .foot-grid .logo-img{
+      height:48px !important;
+    }
+    .foot-grid .logo-text{
+      font-size:20px;
+    }
+    .foot-note{
+      font-size:12px;
+      padding-top:14px;
+      margin-top:16px;
+    }
+  }
 
   @media (max-width:600px){
     .about-grid, .contact-grid{ display:block; }
@@ -1049,7 +1118,7 @@
       <a href="#" class="logo-brand">
         <img src="logo.png" alt="Mysuru Utsava" class="logo-img" style="height:56px;">
         <div class="logo-text-group">
-          <span class="presenter-tag" style="color:var(--cream); opacity:0.8;">Green Guru Youth Foundation</span>
+          <span class="presenter-tag" style="color:var(--green);">Green Guru Youth Foundation</span>
           <span class="logo-text" data-i18n="brand_name">Mysuru <span>Utsava</span></span>
         </div>
       </a>
