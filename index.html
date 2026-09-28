@@ -7,6 +7,17 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  if (window.location.hash) {
+    try {
+      history.replaceState(null, '', window.location.pathname + window.location.search);
+    } catch(e) {}
+  }
+  window.scrollTo(0, 0);
+</script>
 <style>
   :root{
     --cream:#FBF1E4;
@@ -795,7 +806,7 @@
   </nav>
 </header>
 
-<section class="hero">
+<section class="hero" id="hero">
   <div class="hero-motif"></div>
   <div class="wrap">
     <div class="hero-content reveal">
@@ -1549,6 +1560,31 @@
     setInterval(updateTimer, 1000);
   }
   initCountdown();
+
+  // Scroll/Redirect to Hero section on page refresh / reload from any section
+  function resetToHero() {
+    if (window.location.hash) {
+      try {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      } catch(e) {}
+    }
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }
+
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  resetToHero();
+
+  window.addEventListener('beforeunload', resetToHero);
+  window.addEventListener('pageshow', resetToHero);
+  document.addEventListener('DOMContentLoaded', resetToHero);
+  window.addEventListener('load', function(){
+    resetToHero();
+    setTimeout(resetToHero, 50);
+  });
 </script>
 
 </body>
